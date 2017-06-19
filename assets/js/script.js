@@ -7,7 +7,7 @@ $(".btn-primary").on("click", function() {
 			$.getJSON(url, function(data) {
 				console.log(data.currently);
 				$("#summary").text(data.currently.summary);
-				$("#temperature").text(data.currently.apparentTemperature + "F");
+				$("#temperature").html(data.currently.apparentTemperature + "<i class='wi wi-fahrenheit'></i>");
 			});
 		});
 	}
