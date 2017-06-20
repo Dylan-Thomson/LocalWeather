@@ -1,3 +1,6 @@
+var fahrenheit = true;
+var temperature;
+
 $(".btn-primary").on("click", function() {
 	// Check for location data
 	if ("geolocation" in navigator) {
@@ -13,9 +16,24 @@ $(".btn-primary").on("click", function() {
 				console.log(data.currently);
 				// Update page with weather data
 				$("#summary").text(data.currently.summary);
+				temperature = data.currently.apparentTemperature;
 				$("#temperature").html(data.currently.apparentTemperature + "<i class='wi wi-fahrenheit'></i>");
 			});
 		});
+	}
+});
+
+
+$("#temperature").on("click", function() {
+	if(fahrenheit) {
+		temperature = fahrenheitToCelsius(temperature).toFixed(2);
+		$("#temperature").html(temperature + "<i class='wi wi-celsius'></i>");
+		fahrenheit = false;
+	}
+	else {
+		temperature = celsiusToFahrenheit(temperature).toFixed(2);
+		$("#temperature").html(temperature+ "<i class='wi wi-fahrenheit'></i>");
+		fahrenheit = true;
 	}
 });
 
