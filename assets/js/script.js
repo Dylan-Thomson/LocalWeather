@@ -42,6 +42,7 @@ if ("geolocation" in navigator) {
 }
 else {
 	$("#summary").text("GEOLOCATION IS NOT SUPPORTED BY YOUR BROWSER");
+	$("#temperature").text("GEOLOCATION IS NOT SUPPORTED BY YOUR BROWSER");
 }
 
 
