@@ -15,12 +15,10 @@ var icons = {
 	"partly-cloudy": "wi-day-cloudy"
 }
 
-// clear-day, clear-night, rain, snow, sleet, wind, fog, cloudy, partly-cloudy-day, or partly-cloudy-night
-//icons[data.currently.icon]
 if ("geolocation" in navigator) {
 	// Get location data
 	navigator.geolocation.getCurrentPosition(function(position) {
-		
+
 	  // Build URL
 		var url = "https://api.darksky.net/forecast/b2e8d595c58230947ca08220d0572147/" + position.coords.latitude + ",%20" + position.coords.longitude + "?lang=en&units=us&callback=?";
 		console.log(url);
@@ -41,6 +39,9 @@ if ("geolocation" in navigator) {
 			$("i").addClass(icons[data.currently.icon]);
 		});
 	});
+}
+else {
+	$("#summary").text("GEOLOCATION IS NOT SUPPORTED BY YOUR BROWSER");
 }
 
 
