@@ -1,4 +1,3 @@
-var fahrenheit = true;
 var temperature = 78.21;
 
 var icons = {
@@ -41,11 +40,11 @@ if ("geolocation" in navigator) {
 	});
 }
 else {
-	$("#summary").text("GEOLOCATION IS NOT SUPPORTED BY YOUR BROWSER");
 	$("#temperature").text("GEOLOCATION IS NOT SUPPORTED BY YOUR BROWSER");
 }
 
-
+// Convert Temperature between F and C
+var fahrenheit = true;
 $("#temperature").on("click", function() {
 	if(fahrenheit) {
 		temperature = fahrenheitToCelsius(temperature);
