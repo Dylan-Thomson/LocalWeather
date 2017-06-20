@@ -20,10 +20,16 @@ var icons = {
 if ("geolocation" in navigator) {
 	// Get location data
 	navigator.geolocation.getCurrentPosition(function(position) {
-	  $("#location").text(position.coords.latitude + " " + position.coords.longitude);
+		
 	  // Build URL
 		var url = "https://api.darksky.net/forecast/b2e8d595c58230947ca08220d0572147/" + position.coords.latitude + ",%20" + position.coords.longitude + "?lang=en&units=us&callback=?";
 		console.log(url);
+
+		//Get City
+		$.getJSON("https://freegeoip.net/json/?callback=?", function(data) {
+			console.log(data);
+			$("#location").text(data.city + ", " + data.region_name);
+		});
 
 		// Get weather data
 		$.getJSON(url, function(data) {
