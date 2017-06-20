@@ -1,5 +1,5 @@
 var fahrenheit = true;
-var temperature;
+var temperature = 78.21;
 
 $(".btn-primary").on("click", function() {
 	// Check for location data
@@ -21,6 +21,8 @@ $(".btn-primary").on("click", function() {
 			});
 		});
 	}
+
+	// $(this).addClass("hidden");
 });
 
 
