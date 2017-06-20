@@ -1,6 +1,22 @@
 var fahrenheit = true;
 var temperature = 78.21;
 
+var icons = {
+	"clear-day": "wi-day-sunny",
+	"clear-night": "wi-night-clear",
+	"rain": "wi-rain",
+	"snow": "wi-snow",
+	"sleet": "wi-sleet",
+	"wind": "wi-windy",
+	"fog": "wi-fog",
+	"cloudy": "wi-cloudy",
+	"partly-cloudy-day": "wi-day-cloudy",
+	"partly-cloudy-night": "wi-night-alt-cloudy",
+	"partly-cloudy": "wi-day-cloudy"
+}
+
+// clear-day, clear-night, rain, snow, sleet, wind, fog, cloudy, partly-cloudy-day, or partly-cloudy-night
+//icons[data.currently.icon]
 if ("geolocation" in navigator) {
 	// Get location data
 	navigator.geolocation.getCurrentPosition(function(position) {
@@ -16,6 +32,7 @@ if ("geolocation" in navigator) {
 			$("#summary").text(data.currently.summary);
 			temperature = data.currently.temperature;
 			$("#temperature").html(temperature + "<i class='wi wi-fahrenheit'></i>");
+			$("i").addClass(icons[data.currently.icon]);
 		});
 	});
 }
@@ -23,13 +40,13 @@ if ("geolocation" in navigator) {
 
 $("#temperature").on("click", function() {
 	if(fahrenheit) {
-		temperature = fahrenheitToCelsius(temperature).toFixed(2);
-		$("#temperature").html(temperature + "<i class='wi wi-celsius'></i>");
+		temperature = fahrenheitToCelsius(temperature);
+		$("#temperature").html(temperature.toFixed(2) + "<i class='wi wi-celsius'></i>");
 		fahrenheit = false;
 	}
 	else {
-		temperature = celsiusToFahrenheit(temperature).toFixed(2);
-		$("#temperature").html(temperature+ "<i class='wi wi-fahrenheit'></i>");
+		temperature = celsiusToFahrenheit(temperature);
+		$("#temperature").html(temperature.toFixed(2) + "<i class='wi wi-fahrenheit'></i>");
 		fahrenheit = true;
 	}
 });
