@@ -17,11 +17,11 @@ var icons = {
 if ("geolocation" in navigator) {
 	// Get location data
 	navigator.geolocation.getCurrentPosition(function(position) {
-
 	  // Build URL
 		var url = "https://api.darksky.net/forecast/b2e8d595c58230947ca08220d0572147/" + position.coords.latitude + ",%20" + position.coords.longitude + "?lang=en&units=us&callback=?";
 		console.log(url);
 
+		// Get city data -- I would use Google Maps for this, but I don't want to publicly display more API keys than I have to :)
 		$.getJSON("http://ip-api.com/json/?callback=?", function(data) {
 			console.log(data.city)
 			$("#location").text(data.city + ", " + data.regionName + " - " + data.country);
@@ -29,17 +29,19 @@ if ("geolocation" in navigator) {
 
 		// Get weather data
 		$.getJSON(url, function(data) {
-			console.log(data.currently);
+			console.log(data);
 			// Update page with weather data
 			$("#summary").text(data.currently.summary);
 			temperature = data.currently.temperature;
 			$("#temperature").html(temperature + "<i class='wi wi-fahrenheit'></i>");
+			$("#time").text(timeConverter(data.currently.time));
 			$("i").addClass(icons[data.currently.icon]);
+			// console.log(timeConverter(data.currently.time));
 		});
 	});
 }
 else {
-	$("#temperature").text("GEOLOCATION IS NOT SUPPORTED BY YOUR BROWSER");
+	$("#summary").text("GEOLOCATION IS NOT SUPPORTED BY YOUR BROWSER");
 }
 
 // Convert Temperature between F and C
@@ -63,4 +65,17 @@ function fahrenheitToCelsius(temp) {
 
 function celsiusToFahrenheit(temp) {
 	return (temp * 9)/5 + 32;
+}
+
+function timeConverter(UNIX_timestamp){
+  var a = new Date(UNIX_timestamp * 1000);
+  var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  var year = a.getFullYear();
+  var month = months[a.getMonth()];
+  var date = a.getDate();
+  var hour = a.getHours();
+  var min = a.getMinutes();
+  console.log(typeof min);
+  var time = date + " " + month + " " + year + " " + hour + ":" + ('0' + min).slice(-2);
+  return time;
 }
