@@ -34,7 +34,7 @@ if ("geolocation" in navigator) {
 			$("#summary").text(data.currently.summary);
 			temperature = data.currently.temperature;
 			$("#temperature").html(temperature + "<i class='wi wi-fahrenheit'></i>");
-			$("#time").text(timeConverter(data.currently.time));
+			$("#time").text("Updated: " + timeConverter(data.currently.time));
 			$("i").addClass(icons[data.currently.icon]);
 			// console.log(timeConverter(data.currently.time));
 		});
