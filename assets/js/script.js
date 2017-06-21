@@ -22,10 +22,9 @@ if ("geolocation" in navigator) {
 		var url = "https://api.darksky.net/forecast/b2e8d595c58230947ca08220d0572147/" + position.coords.latitude + ",%20" + position.coords.longitude + "?lang=en&units=us&callback=?";
 		console.log(url);
 
-		//Get City
-		$.getJSON("https://freegeoip.net/json/?callback=?", function(data) {
-			console.log(data);
-			$("#location").text(data.city + ", " + data.region_name);
+		$.getJSON("http://ip-api.com/json/?callback=?", function(data) {
+			console.log(data.city)
+			$("#location").text(data.city + ", " + data.regionName + " - " + data.country);
 		});
 
 		// Get weather data
