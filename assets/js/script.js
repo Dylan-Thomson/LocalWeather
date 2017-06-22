@@ -50,12 +50,12 @@ var fahrenheit = true;
 $("#temperature").on("click", function() {
 	if(fahrenheit) {
 		temperature = fahrenheitToCelsius(temperature);
-		$("#temperature").html(temperature.toFixed(2) + "<i class='wi wi-celsius'></i>");
+		$("#temperature").html(Math.round(temperature) + "<i class='wi wi-celsius'></i>");
 		fahrenheit = false;
 	}
 	else {
 		temperature = celsiusToFahrenheit(temperature);
-		$("#temperature").html(temperature.toFixed(2) + "<i class='wi wi-fahrenheit'></i>");
+		$("#temperature").html(Math.round(temperature) + "<i class='wi wi-fahrenheit'></i>");
 		fahrenheit = true;
 	}
 });
