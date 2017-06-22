@@ -31,12 +31,13 @@ if ("geolocation" in navigator) {
 		$.getJSON(url, function(data) {
 			console.log(data);
 			// Update page with weather data
+			$(".fa-spinner").addClass("hidden");
+			$("#time").text("Updated: " + timeConverter(data.currently.time));
+			$("#temperature").html(temperature + "<i class='wi wi-fahrenheit'></i>");
+			$("#weatherIconToday").addClass(icons[data.currently.icon]);
 			$("#summary").text(data.currently.summary);
 			temperature = data.currently.temperature;
-			$("#temperature").html(temperature + "<i class='wi wi-fahrenheit'></i>");
-			$("#time").text("Updated: " + timeConverter(data.currently.time));
 
-			$("#weatherIconToday").addClass(icons[data.currently.icon]);
 			// console.log(timeConverter(data.currently.time));
 		});
 	});
