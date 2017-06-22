@@ -31,7 +31,7 @@ if ("geolocation" in navigator) {
 		$.getJSON(url, function(data) {
 			console.log(data);
 			// Update page with weather data
-			temperature = data.currently.temperature;
+			temperature = Math.round(data.currently.temperature);
 			$(".fa-spinner").addClass("hidden");
 			$("#time").text("Updated: " + timeConverter(data.currently.time));
 			$("#temperature").html(temperature + "<i class='wi wi-fahrenheit'></i>");
