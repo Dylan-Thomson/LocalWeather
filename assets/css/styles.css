@@ -1,4 +1,15 @@
+body {
+	font-size: 2em;
+}
+
 #temperature:hover {
 	color: blue;
 }
 
+#time {
+	font-size: 0.5em;
+}
+
+#weatherIconToday{
+	font-size: 3em;
+}
