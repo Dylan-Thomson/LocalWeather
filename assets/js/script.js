@@ -1,4 +1,4 @@
-var temperature = 78.21;
+var temperature;
 
 var icons = {
 	"clear-day": "wi-day-sunny",
@@ -31,13 +31,12 @@ if ("geolocation" in navigator) {
 		$.getJSON(url, function(data) {
 			console.log(data);
 			// Update page with weather data
+			temperature = data.currently.temperature;
 			$(".fa-spinner").addClass("hidden");
 			$("#time").text("Updated: " + timeConverter(data.currently.time));
 			$("#temperature").html(temperature + "<i class='wi wi-fahrenheit'></i>");
 			$("#weatherIconToday").addClass(icons[data.currently.icon]);
 			$("#summary").text(data.currently.summary);
-			temperature = data.currently.temperature;
-
 			// console.log(timeConverter(data.currently.time));
 		});
 	});
