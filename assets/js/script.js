@@ -24,7 +24,7 @@ if ("geolocation" in navigator) {
 		// Get city data -- I would use Google Maps for this, but I don't want to publicly display more API keys than I have to :)
 		$.getJSON("http://ip-api.com/json/?callback=?", function(data) {
 			console.log(data.city)
-			$("#location").text(data.city + ", " + data.regionName + " - " + data.country);
+			$("#location").html("<i class='fa fa-map-marker' aria-hidden='true'></i> " + data.city + ", " + data.regionName + " - " + data.country);
 		});
 
 		// Get weather data
@@ -35,6 +35,7 @@ if ("geolocation" in navigator) {
 			temperature = data.currently.temperature;
 			$("#temperature").html(temperature + "<i class='wi wi-fahrenheit'></i>");
 			$("#time").text("Updated: " + timeConverter(data.currently.time));
+
 			$("i").addClass(icons[data.currently.icon]);
 			// console.log(timeConverter(data.currently.time));
 		});
