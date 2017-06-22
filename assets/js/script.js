@@ -76,7 +76,8 @@ function timeConverter(UNIX_timestamp){
   var date = a.getDate();
   var hour = a.getHours();
   var min = a.getMinutes();
-  console.log(typeof min);
-  var time = date + " " + month + " " + year + " " + hour + ":" + ('0' + min).slice(-2);
-  return time;
+  if(hour > 12) {
+  	return  date + " " + month + " " + year + " " + (hour-12) + ":" + ('0' + min).slice(-2) + " PM";
+  } 
+  return date + " " + month + " " + year + " " + hour + ":" + ('0' + min).slice(-2) + " AM";
 }
