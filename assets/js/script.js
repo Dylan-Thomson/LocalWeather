@@ -72,102 +72,47 @@ var weatherTheme = {
 }
 
 $("#clearday").on("click", function() {
-		$("#weatherIconToday").removeClass();
-		$("#weatherIconToday").addClass("wi");
-		$("#weatherIconToday").addClass(weatherTheme["clear-day"].symbol);
-		$(".row").css("background", weatherTheme["clear-day"].background);
-		$("#weatherIconToday").css("color", weatherTheme["clear-day"].symbolColor);
-		$(".row").css("color", weatherTheme["clear-day"].color);
+		updateTheme("clear-day");
 });
 
 $("#clearnight").on("click", function() {
-		$("#weatherIconToday").removeClass();
-		$("#weatherIconToday").addClass("wi");
-		$("#weatherIconToday").addClass(weatherTheme["clear-night"].symbol);
-		$(".row").css("background", weatherTheme["clear-night"].background);
-		$("#weatherIconToday").css("color", weatherTheme["clear-night"].symbolColor);
-		$(".row").css("color", weatherTheme["clear-night"].color);
+		updateTheme("clear-night");
 });
 
 $("#rain").on("click", function() {
-		$("#weatherIconToday").removeClass();
-		$("#weatherIconToday").addClass("wi");
-		$("#weatherIconToday").addClass(weatherTheme["rain"].symbol);
-		$(".row").css("background", weatherTheme["rain"].background);
-		$("#weatherIconToday").css("color", weatherTheme["rain"].symbolColor);
-		$(".row").css("color", weatherTheme["rain"].color);
+		updateTheme("rain");
 });
 
 $("#snow").on("click", function() {
-		$("#weatherIconToday").removeClass();
-		$("#weatherIconToday").addClass("wi");
-		$("#weatherIconToday").addClass(weatherTheme["snow"].symbol);
-		$(".row").css("background", weatherTheme["snow"].background);
-		$("#weatherIconToday").css("color", weatherTheme["snow"].symbolColor);
-		$(".row").css("color", weatherTheme["snow"].color);
+		updateTheme("snow");
 });
 
 $("#sleet").on("click", function() {
-		$("#weatherIconToday").removeClass();
-		$("#weatherIconToday").addClass("wi");
-		$("#weatherIconToday").addClass(weatherTheme["sleet"].symbol);
-		$(".row").css("background", weatherTheme["sleet"].background);
-		$("#weatherIconToday").css("color", weatherTheme["sleet"].symbolColor);
-		$(".row").css("color", weatherTheme["sleet"].color);
+		updateTheme("sleet");
 });
 
 $("#windy").on("click", function() {
-		$("#weatherIconToday").removeClass();
-		$("#weatherIconToday").addClass("wi");
-		$("#weatherIconToday").addClass(weatherTheme["wind"].symbol);
-		$(".row").css("background", weatherTheme["wind"].background);
-		$("#weatherIconToday").css("color", weatherTheme["wind"].symbolColor);
-		$(".row").css("color", weatherTheme["wind"].color);
+		updateTheme("wind");
 });
 
 $("#fog").on("click", function() {
-		$("#weatherIconToday").removeClass();
-		$("#weatherIconToday").addClass("wi");
-		$("#weatherIconToday").addClass(weatherTheme["fog"].symbol);
-		$(".row").css("background", weatherTheme["fog"].background);
-		$("#weatherIconToday").css("color", weatherTheme["fog"].symbolColor);
-		$(".row").css("color", weatherTheme["fog"].color);
+		updateTheme("fog");
 });
 
 $("#cloudy").on("click", function() {
-		$("#weatherIconToday").removeClass();
-		$("#weatherIconToday").addClass("wi");
-		$("#weatherIconToday").addClass(weatherTheme["cloudy"].symbol);
-		$(".row").css("background", weatherTheme["cloudy"].background);
-		$("#weatherIconToday").css("color", weatherTheme["cloudy"].symbolColor);
-		$(".row").css("color", weatherTheme["cloudy"].color);
+		updateTheme("cloudy");
 });
 
 $("#pcd").on("click", function() {
-		$("#weatherIconToday").removeClass();
-		$("#weatherIconToday").addClass("wi");
-		$("#weatherIconToday").addClass(weatherTheme["partly-cloudy-day"].symbol);
-		$(".row").css("background", weatherTheme["partly-cloudy-day"].background);
-		$("#weatherIconToday").css("color", weatherTheme["partly-cloudy-day"].symbolColor);
-		$(".row").css("color", weatherTheme["partly-cloudy-day"].color);
+		updateTheme("partly-cloudy-day");
 });
 
 $("#pcn").on("click", function() {
-		$("#weatherIconToday").removeClass();
-		$("#weatherIconToday").addClass("wi");
-		$("#weatherIconToday").addClass(weatherTheme["partly-cloudy-night"].symbol);
-		$(".row").css("background", weatherTheme["partly-cloudy-night"].background);
-		$("#weatherIconToday").css("color", weatherTheme["partly-cloudy-night"].symbolColor);
-		$(".row").css("color", weatherTheme["partly-cloudy-night"].color);
+		updateTheme("partly-cloudy-night");
 });
 
 $("#pc").on("click", function() {
-		$("#weatherIconToday").removeClass();
-		$("#weatherIconToday").addClass("wi");
-		$("#weatherIconToday").addClass(weatherTheme["partly-cloudy"].symbol);
-		$(".row").css("background", weatherTheme["partly-cloudy"].background);
-		$("#weatherIconToday").css("color", weatherTheme["partly-cloudy"].symbolColor);
-		$(".row").css("color", weatherTheme["partly-cloudy"].color);
+		updateTheme("partly-cloudy");
 });
 
 if ("geolocation" in navigator) {
@@ -199,9 +144,7 @@ if ("geolocation" in navigator) {
 			$("#wind").html("Wind: " + data.currently.windSpeed + "MPH");
 
 			// Style new content
-			$(".row").css("background", weatherTheme[data.currently.icon].background);
-			$(".row").css("color", weatherTheme	[data.currently.icon].color);
-			$("#weatherIconToday").css("color", weatherTheme[data.currently.icon].symbolColor);
+			updateTheme(data.currently.icon);
 		});
 	});
 }
@@ -251,4 +194,13 @@ function timeConverter(UNIX_timestamp){
 
   }
   return date + " " + month + " " + year + " " + hour + ":" + ('0' + min).slice(-2) + " AM";
+}
+
+function updateTheme(str) {
+		$("#weatherIconToday").removeClass();
+		$("#weatherIconToday").addClass("wi");
+		$("#weatherIconToday").addClass(weatherTheme[str].symbol);
+		$(".row").css("background", weatherTheme[str].background);
+		$("#weatherIconToday").css("color", weatherTheme[str].symbolColor);
+		$(".row").css("color", weatherTheme[str].color);
 }
