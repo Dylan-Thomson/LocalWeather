@@ -189,7 +189,7 @@ function timeConverter(UNIX_timestamp){
   if(hour > 12) {
   	return  date + " " + month + " " + year + " " + (hour-12) + ":" + ('0' + min).slice(-2) + " PM";
   } 
-  if(hour = 12) {
+  if(hour === 12) {
   	return  date + " " + month + " " + year + " " + hour + ":" + ('0' + min).slice(-2) + " PM";
 
   }
