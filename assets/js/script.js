@@ -72,6 +72,8 @@ var weatherTheme = {
 }
 
 $("#clearday").on("click", function() {
+		$("#weatherIconToday").removeClass();
+		$("#weatherIconToday").addClass("wi");
 		$("#weatherIconToday").addClass(weatherTheme["clear-day"].symbol);
 		$(".row").css("background", weatherTheme["clear-day"].background);
 		$("#weatherIconToday").css("color", weatherTheme["clear-day"].symbolColor);
@@ -79,6 +81,8 @@ $("#clearday").on("click", function() {
 });
 
 $("#clearnight").on("click", function() {
+		$("#weatherIconToday").removeClass();
+		$("#weatherIconToday").addClass("wi");
 		$("#weatherIconToday").addClass(weatherTheme["clear-night"].symbol);
 		$(".row").css("background", weatherTheme["clear-night"].background);
 		$("#weatherIconToday").css("color", weatherTheme["clear-night"].symbolColor);
@@ -86,6 +90,8 @@ $("#clearnight").on("click", function() {
 });
 
 $("#rain").on("click", function() {
+		$("#weatherIconToday").removeClass();
+		$("#weatherIconToday").addClass("wi");
 		$("#weatherIconToday").addClass(weatherTheme["rain"].symbol);
 		$(".row").css("background", weatherTheme["rain"].background);
 		$("#weatherIconToday").css("color", weatherTheme["rain"].symbolColor);
@@ -93,6 +99,8 @@ $("#rain").on("click", function() {
 });
 
 $("#snow").on("click", function() {
+		$("#weatherIconToday").removeClass();
+		$("#weatherIconToday").addClass("wi");
 		$("#weatherIconToday").addClass(weatherTheme["snow"].symbol);
 		$(".row").css("background", weatherTheme["snow"].background);
 		$("#weatherIconToday").css("color", weatherTheme["snow"].symbolColor);
@@ -100,6 +108,8 @@ $("#snow").on("click", function() {
 });
 
 $("#sleet").on("click", function() {
+		$("#weatherIconToday").removeClass();
+		$("#weatherIconToday").addClass("wi");
 		$("#weatherIconToday").addClass(weatherTheme["sleet"].symbol);
 		$(".row").css("background", weatherTheme["sleet"].background);
 		$("#weatherIconToday").css("color", weatherTheme["sleet"].symbolColor);
@@ -107,6 +117,8 @@ $("#sleet").on("click", function() {
 });
 
 $("#windy").on("click", function() {
+		$("#weatherIconToday").removeClass();
+		$("#weatherIconToday").addClass("wi");
 		$("#weatherIconToday").addClass(weatherTheme["wind"].symbol);
 		$(".row").css("background", weatherTheme["wind"].background);
 		$("#weatherIconToday").css("color", weatherTheme["wind"].symbolColor);
@@ -114,6 +126,8 @@ $("#windy").on("click", function() {
 });
 
 $("#fog").on("click", function() {
+		$("#weatherIconToday").removeClass();
+		$("#weatherIconToday").addClass("wi");
 		$("#weatherIconToday").addClass(weatherTheme["fog"].symbol);
 		$(".row").css("background", weatherTheme["fog"].background);
 		$("#weatherIconToday").css("color", weatherTheme["fog"].symbolColor);
@@ -121,6 +135,8 @@ $("#fog").on("click", function() {
 });
 
 $("#cloudy").on("click", function() {
+		$("#weatherIconToday").removeClass();
+		$("#weatherIconToday").addClass("wi");
 		$("#weatherIconToday").addClass(weatherTheme["cloudy"].symbol);
 		$(".row").css("background", weatherTheme["cloudy"].background);
 		$("#weatherIconToday").css("color", weatherTheme["cloudy"].symbolColor);
@@ -128,6 +144,8 @@ $("#cloudy").on("click", function() {
 });
 
 $("#pcd").on("click", function() {
+		$("#weatherIconToday").removeClass();
+		$("#weatherIconToday").addClass("wi");
 		$("#weatherIconToday").addClass(weatherTheme["partly-cloudy-day"].symbol);
 		$(".row").css("background", weatherTheme["partly-cloudy-day"].background);
 		$("#weatherIconToday").css("color", weatherTheme["partly-cloudy-day"].symbolColor);
@@ -135,6 +153,8 @@ $("#pcd").on("click", function() {
 });
 
 $("#pcn").on("click", function() {
+		$("#weatherIconToday").removeClass();
+		$("#weatherIconToday").addClass("wi");
 		$("#weatherIconToday").addClass(weatherTheme["partly-cloudy-night"].symbol);
 		$(".row").css("background", weatherTheme["partly-cloudy-night"].background);
 		$("#weatherIconToday").css("color", weatherTheme["partly-cloudy-night"].symbolColor);
@@ -142,6 +162,8 @@ $("#pcn").on("click", function() {
 });
 
 $("#pc").on("click", function() {
+		$("#weatherIconToday").removeClass();
+		$("#weatherIconToday").addClass("wi");
 		$("#weatherIconToday").addClass(weatherTheme["partly-cloudy"].symbol);
 		$(".row").css("background", weatherTheme["partly-cloudy"].background);
 		$("#weatherIconToday").css("color", weatherTheme["partly-cloudy"].symbolColor);
