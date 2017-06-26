@@ -6,7 +6,7 @@ var weatherTheme = {
 		symbol: "wi-day-sunny",
 		background: "rgb(189, 247, 255)",
 		symbolColor: "rgb(255, 203, 90)",
-		color: "rgb(0, 0, 0)"
+		color: "rgb(255, 255, 255)"
 	},
 
 	"clear-night": {
@@ -43,19 +43,19 @@ var weatherTheme = {
 		symbol: "wi-fog",
 		background:	"rgb(90, 89, 104)",
 		symbolColor: "rgb(154, 153, 163)",
-		color: "rgb(235, 233, 218)"
+		color: "rgb(255, 255, 255)"
 	},
 	"cloudy": {
 		symbol: "wi-cloudy",
 		background:	"rgb(90, 89, 104)",
 		symbolColor: "rgb(154, 153, 163)",
-		color: "rgb(235, 233, 218)"
+		color: "rgb(255, 255, 255)"
 	},
 	"partly-cloudy-day": {
 		symbol: "wi-day-cloudy",
 		background: "rgb(138, 208, 206)",
 		symbolColor: "rgb(255, 214, 134)",
-		color: "rgb(55, 142, 139)"
+		color: "rgb(255, 255, 255)"
 	},
 	"partly-cloudy-night": {
 		symbol: "wi-night-alt-cloudy",
@@ -141,13 +141,13 @@ if ("geolocation" in navigator) {
 			$("#currentlySummary").text(data.currently.summary);
 			$("#minutelySummary").text(data.minutely.summary);
 			$("#hourlySummary").text(data.hourly.summary);
-			$("#wind").html("<i class='wi wi-wind from-" + data.currently.windBearing + "-deg'></i>" + "Wind: " + Math.round(data.currently.windSpeed) + " MPH");
-			$("#humidity").html("<i class='wi wi-humidity'></i> Humidity: " + Math.round(data.currently.humidity * 100) + "%");
+			$("#wind").html("Wind: " + Math.round(data.currently.windSpeed) + " MPH" + "<i class='wi wi-wind from-" + data.currently.windBearing + "-deg'></i>");
+			$("#humidity").html("Humidity: " + Math.round(data.currently.humidity * 100) + "%");
 			$("#dewPoint").html("Dew Point: " + data.currently.dewPoint + "<i class='wi wi-degrees'></i>");
 			$("#uvIndex").html("UV Index: " + data.currently.uvIndex);
 			$("#visibility").html("Visibility: " + data.currently.visibility + " miles");
 
-			$("#pressure").html("<i class='wi wi-barometer'></i> Air Pressure:" + Math.round(data.currently.pressure));
+			$("#pressure").html("Air Pressure:" + Math.round(data.currently.pressure));
 			// Style new content
 			updateTheme(data.currently.icon);
 		});
