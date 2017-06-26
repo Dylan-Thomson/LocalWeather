@@ -141,10 +141,13 @@ if ("geolocation" in navigator) {
 			$("#currentlySummary").text(data.currently.summary);
 			$("#minutelySummary").text(data.minutely.summary);
 			$("#hourlySummary").text(data.hourly.summary);
-			$("#pressure").html("<i class='wi wi-barometer'></i> Air Pressure:" + Math.round(data.currently.pressure));
-			$("#humidity").html("<i class='wi wi-humidity'></i> Humidity: " + Math.round(data.currently.humidity * 100) + "%");
 			$("#wind").html("<i class='wi wi-wind from-" + data.currently.windBearing + "-deg'></i>" + "Wind: " + Math.round(data.currently.windSpeed) + " MPH");
+			$("#humidity").html("<i class='wi wi-humidity'></i> Humidity: " + Math.round(data.currently.humidity * 100) + "%");
+			$("#dewPoint").html("Dew Point: " + data.currently.dewPoint + "<i class='wi wi-degrees'></i>");
+			$("#uvIndex").html("UV Index: " + data.currently.uvIndex);
+			$("#visibility").html("Visibility: " + data.currently.visibility + " miles");
 
+			$("#pressure").html("<i class='wi wi-barometer'></i> Air Pressure:" + Math.round(data.currently.pressure));
 			// Style new content
 			updateTheme(data.currently.icon);
 		});
