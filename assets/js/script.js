@@ -139,6 +139,7 @@ if ("geolocation" in navigator) {
 			$("#weatherIconToday").addClass(weatherTheme[data.currently.icon].symbol);
 
 			$("#currentlySummary").text(data.currently.summary);
+			$("#minutelySummary").text(data.minutely.summary);
 			$("#hourlySummary").text(data.hourly.summary);
 			$("#pressure").html("<i class='wi wi-barometer'></i> Air Pressure:" + data.currently.pressure);
 			$("#humidity").html("<i class='wi wi-humidity'></i> Humidity: " + Math.round(data.currently.humidity * 100) + "%");
