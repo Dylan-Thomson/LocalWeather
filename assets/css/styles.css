@@ -13,10 +13,6 @@
 	background: #666;
 }
 
-.row {
-	padding: 1em 5em;
-}
-
 #temperature:hover {
 	color: red;
 }

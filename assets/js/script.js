@@ -131,8 +131,15 @@ if ("geolocation" in navigator) {
 		// Get weather data
 		$.getJSON(url, function(data) {
 			console.log(data);
-			// Update page with weather data
 			$(".fa-spinner").addClass("hidden");
+			$(".btn").removeClass("hidden");
+			$(".row").css({
+				padding: "5em",
+				background: "rgba(50, 50, 50, 0.5)",
+				borderRadius: "25px"
+			});
+			
+			// Update page with weather data
 			temperature = Math.round(data.currently.temperature);
 			$("#time").text(timeConverter(data.currently.time));
 			$("#temperature").html(temperature + "<i class='wi wi-fahrenheit'></i>");
