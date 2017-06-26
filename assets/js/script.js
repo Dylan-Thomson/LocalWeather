@@ -142,6 +142,10 @@ if ("geolocation" in navigator) {
 			// $("#pressure").html("Air Pressure:" + data.currently.pressure);
 			$("#humidity").html("Humidity: " + Math.round(data.currently.humidity * 100) + "%");
 			$("#wind").html("Wind: " + data.currently.windSpeed + "MPH");
+			$("#forcast").text(data.hourly.summary);
+			$("#pressure").html("<i class='wi wi-barometer'></i> Air Pressure:" + data.currently.pressure);
+			$("#humidity").html("<i class='wi wi-humidity'></i> Humidity: " + Math.round(data.currently.humidity * 100) + "%");
+			$("#wind").html("<i class='wi wi-wind towards-" + data.currently.windSpeed.toString() + "-deg'></i>" + "Wind: " + data.currently.windSpeed + "MPH");
 
 			// Style new content
 			updateTheme(data.currently.icon);
