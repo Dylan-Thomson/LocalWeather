@@ -20,11 +20,9 @@
 <button id="pcd">PCD</button>
 <button id="pcn">PCN</button>
 <button id="pc">PC</button>
-<div class="container-fluid">
-	<div class="row  flex-container">
-		<div class="col-xs-12">
-			<p id="location"></p>
-			<p id="time"></p>
+<div class="container-fluid flex-container">
+	<div class="row">
+		<div class="col-sm-6">
 
 			<i class="fa fa-spinner fa-pulse fa-3x fa-fw" aria-hidden="true"></i>
 
@@ -33,14 +31,21 @@
 				<span id="temperature"></span>
 				<span id="currentlySummary"></span>
 			</p>
+			<p id="location"></p>
+			<p id="time"></p>
+		</div>
+		<div class="col-sm-6">	
 			<p id="minutelySummary">	</p>
 			<p id="hourlySummary"></p>
-				<span id="wind"></span> 
-				<span id="humidity"></span> 
-				<span id="dewPoint"></span>
-				<span id="uvIndex"></span>
-				<span id="visibility"></span>
-				<span id="pressure"></span> 
+				<p>
+					<div id="wind"></div> 
+					<div id="humidity"></div> 
+					<div id="dewPoint"></div>
+					<div id="uvIndex"></div>
+					<div id="visibility"></div>
+					<div id="pressure"></div> 
+				</p>
+				<button class="btn btn-primary">Imperial/Metric</button>
 		</div>
 	</div>	
 </div>
