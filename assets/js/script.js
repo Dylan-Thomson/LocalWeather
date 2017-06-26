@@ -141,7 +141,7 @@ if ("geolocation" in navigator) {
 			$("#currentlySummary").text(data.currently.summary);
 			$("#minutelySummary").text(data.minutely.summary);
 			$("#hourlySummary").text(data.hourly.summary);
-			$("#pressure").html("<i class='wi wi-barometer'></i> Air Pressure:" + data.currently.pressure);
+			$("#pressure").html("<i class='wi wi-barometer'></i> Air Pressure:" + Math.round(data.currently.pressure));
 			$("#humidity").html("<i class='wi wi-humidity'></i> Humidity: " + Math.round(data.currently.humidity * 100) + "%");
 			$("#wind").html("<i class='wi wi-wind towards-" + data.currently.windSpeed + "-deg'></i>" + "Wind: " + Math.round(data.currently.windSpeed) + " MPH");
 
