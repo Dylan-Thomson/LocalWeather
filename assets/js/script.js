@@ -6,7 +6,7 @@ var weatherTheme = {
 		symbol: "wi-day-sunny",
 		background: "rgb(189, 247, 255)",
 		symbolColor: "rgb(255, 203, 90)",
-		color: "rgb(255, 255, 255)"
+		color: "rgb(0, 0, 0)"
 	},
 
 	"clear-night": {
@@ -200,7 +200,7 @@ function updateTheme(str) {
 		$("#weatherIconToday").removeClass();
 		$("#weatherIconToday").addClass("wi");
 		$("#weatherIconToday").addClass(weatherTheme[str].symbol);
-		$(".row").css("background", weatherTheme[str].background);
+		$(".flex-container").css("background", weatherTheme[str].background);
 		$("#weatherIconToday").css("color", weatherTheme[str].symbolColor);
-		$(".row").css("color", weatherTheme[str].color);
+		$(".flex-container").css("color", weatherTheme[str].color);
 }
