@@ -134,7 +134,7 @@ if ("geolocation" in navigator) {
 		$.getJSON(url, function(data) {
 			console.log(data);
 			$(".fa-spinner").addClass("hidden");
-			$(".btn").removeClass("hidden");
+			$(".row").removeClass("hidden");
 
 			//TODO add class
 			$(".row").css({
