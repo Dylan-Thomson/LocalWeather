@@ -1,6 +1,8 @@
 var temperature;
 
 // Themes for each weather condition
+
+// TODO: Move styles to CSS using classes
 var weatherTheme = {
 	"clear-day": {
 		symbol: "wi-day-sunny",
@@ -133,10 +135,12 @@ if ("geolocation" in navigator) {
 			console.log(data);
 			$(".fa-spinner").addClass("hidden");
 			$(".btn").removeClass("hidden");
+
+			//TODO add class
 			$(".row").css({
-				padding: "5em",
+				padding: "1em 0 0 0",
 				background: "rgba(50, 50, 50, 0.5)",
-				borderRadius: "25px"
+				borderRadius: "5px"
 			});
 			
 			// Update page with weather data
@@ -150,12 +154,10 @@ if ("geolocation" in navigator) {
 			$("#hourlySummary").text(data.hourly.summary);
 			$("#wind").html("Wind: " + Math.round(data.currently.windSpeed) + " MPH" + "<i class='wi wi-wind from-" + data.currently.windBearing + "-deg'></i>");
 			$("#humidity").html("Humidity: " + Math.round(data.currently.humidity * 100) + "%");
-			$("#dewPoint").html("Dew Point: " + data.currently.dewPoint + "<i class='wi wi-degrees'></i>");
 			$("#dewPoint").html("Dew Point: " + Math.round(data.currently.dewPoint) + "<i class='wi wi-degrees'></i>");
 			$("#uvIndex").html("UV Index: " + data.currently.uvIndex);
 			$("#visibility").html("Visibility: " + data.currently.visibility + " miles");
 
-			$("#pressure").html("Air Pressure:" + Math.round(data.currently.pressure));
 			$("#pressure").html("Air Pressure:" + Math.round(data.currently.pressure) + " mB");
 			// Style new content
 			updateTheme(data.currently.icon);
@@ -210,6 +212,7 @@ function timeConverter(UNIX_timestamp){
   return date + " " + month + " " + year + " " + hour + ":" + ('0' + min).slice(-2) + " AM";
 }
 
+//TODO replace css with addclass
 function updateTheme(str) {
 		$("#weatherIconToday").removeClass();
 		$("#weatherIconToday").addClass("wi");

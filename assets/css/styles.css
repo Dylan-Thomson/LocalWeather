@@ -10,7 +10,16 @@
 	-webkit-align-items: center;
 	align-items: center;
 	text-align: center;
-	background: #666;
+/*	padding: 0px;*/
+
+}
+
+.col-xs-12 {
+	padding: 0px;
+}
+
+.btn {
+	width: 100%;
 }
 
 #temperature:hover {
@@ -23,4 +32,22 @@
 
 #weather {
 	font-size: 4em;
+}
+
+#location, #hourlySummary {
+	font-size: 2em;
+}
+
+#minutelySummary, #time, .btn {
+	font-size: 	1.5em;
+}
+
+#weatherData {
+	margin: 1em auto;
+	background: rgba(15, 15, 15, .7);
+}
+
+#weatherData div {
+	display: inline-block;
+	margin: auto 5px;
 }
