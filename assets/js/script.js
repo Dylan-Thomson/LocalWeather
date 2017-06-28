@@ -203,14 +203,20 @@ function timeConverter(UNIX_timestamp){
   var date = a.getDate();
   var hour = a.getHours();
   var min = a.getMinutes();
+  var days = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'];
+  var day = days[a.getDay()];
+
   if(hour > 12) {
   	return  date + " " + month + " " + year + " " + (hour-12) + ":" + ('0' + min).slice(-2) + " PM";
+  	return day + ", " + month + " " + date + ", " + year + " " + (hour-12) + ":" + ('0' + min).slice(-2) + " PM";
   } 
   if(hour === 12) {
   	return  date + " " + month + " " + year + " " + hour + ":" + ('0' + min).slice(-2) + " PM";
+  	return day + ", " + month + " " + date + ", " + year + " " + hour + ":" + ('0' + min).slice(-2) + " PM";
 
   }
   return date + " " + month + " " + year + " " + hour + ":" + ('0' + min).slice(-2) + " AM";
+  return day + ", " + month + " " + date + ", " + year + " " + hour + ":" + ('0' + min).slice(-2) + " AM";
 }
 
 //TODO replace css with addclass
