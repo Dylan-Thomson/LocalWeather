@@ -151,10 +151,12 @@ if ("geolocation" in navigator) {
 			$("#wind").html("Wind: " + Math.round(data.currently.windSpeed) + " MPH" + "<i class='wi wi-wind from-" + data.currently.windBearing + "-deg'></i>");
 			$("#humidity").html("Humidity: " + Math.round(data.currently.humidity * 100) + "%");
 			$("#dewPoint").html("Dew Point: " + data.currently.dewPoint + "<i class='wi wi-degrees'></i>");
+			$("#dewPoint").html("Dew Point: " + Math.round(data.currently.dewPoint) + "<i class='wi wi-degrees'></i>");
 			$("#uvIndex").html("UV Index: " + data.currently.uvIndex);
 			$("#visibility").html("Visibility: " + data.currently.visibility + " miles");
 
 			$("#pressure").html("Air Pressure:" + Math.round(data.currently.pressure));
+			$("#pressure").html("Air Pressure:" + Math.round(data.currently.pressure) + " mB");
 			// Style new content
 			updateTheme(data.currently.icon);
 		});
