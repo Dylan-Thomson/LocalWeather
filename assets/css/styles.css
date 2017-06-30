@@ -29,10 +29,10 @@
 	width: 100%;
 }
 
-#temperature:hover {
+/*#temperature:hover {
 	color: red;
 }
-
+*/
 #time {
 	font-style: italic;
 }

@@ -119,19 +119,19 @@ else {
 
 // Convert Temperature between F and C
 var fahrenheit = true;
-$("#temperature").on("click", function() {
-	// TODO: Refractor
-	if(fahrenheit) {
-		temperature = fahrenheitToCelsius(temperature);
-		$("#temperature").html(Math.round(temperature) + "<i class='wi wi-celsius'></i>");
-		fahrenheit = false;
-	}
-	else {
-		temperature = celsiusToFahrenheit(temperature);
-		$("#temperature").html(Math.round(temperature) + "<i class='wi wi-fahrenheit'></i>");
-		fahrenheit = true;
-	}
-});
+// $("#temperature").on("click", function() {
+// 	// TODO: Refractor
+// 	if(fahrenheit) {
+// 		temperature = fahrenheitToCelsius(temperature);
+// 		$("#temperature").html(Math.round(temperature) + "<i class='wi wi-celsius'></i>");
+// 		fahrenheit = false;
+// 	}
+// 	else {
+// 		temperature = celsiusToFahrenheit(temperature);
+// 		$("#temperature").html(Math.round(temperature) + "<i class='wi wi-fahrenheit'></i>");
+// 		fahrenheit = true;
+// 	}
+// });
 
 function fahrenheitToCelsius(temp) {
 	return ((temp - 32) * 5)/9;
