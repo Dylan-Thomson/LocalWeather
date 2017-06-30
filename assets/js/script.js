@@ -171,7 +171,6 @@ function timeConverter(UNIX_timestamp){
   	return day + ", " + month + " " + date + ", " + year + " " + hour + ":" + ('0' + min).slice(-2) + " PM";
 
   }
-  return date + " " + month + " " + year + " " + hour + ":" + ('0' + min).slice(-2) + " AM";
   return day + ", " + month + " " + date + ", " + year + " " + hour + ":" + ('0' + min).slice(-2) + " AM";
 }
 
