@@ -1,7 +1,6 @@
 var temperature;
 
 // Themes for each weather condition
-
 // TODO: Move styles to CSS using classes
 var weatherTheme = {
 	"clear-day": {
@@ -92,13 +91,6 @@ if ("geolocation" in navigator) {
 			$(".fa-spinner").addClass("hidden");
 			$(".row").removeClass("hidden");
 
-			//TODO add class
-			$(".row").css({
-				padding: "1em 0 0 0",
-				background: "rgba(50, 50, 50, 0.5)",
-				borderRadius: "5px"
-			});
-			
 			// Update page with weather data
 			temperature = Math.round(data.currently.temperature);
 			$("#time").text(timeConverter(data.currently.time));
@@ -108,7 +100,6 @@ if ("geolocation" in navigator) {
 			$("#currentlySummary").text(data.currently.summary);
 			$("#minutelySummary").text(data.minutely.summary);
 			$("#hourlySummary").text(data.hourly.summary);
-			$("#wind").html("Wind: " + Math.round(data.currently.windSpeed) + " MPH" + "<i class='wi wi-wind from-" + data.currently.windBearing + "-deg'></i>");
 			$("#wind").html("Wind: " + Math.round(data.currently.windSpeed) + " MPH" + " <i class='wi wi-wind from-" + data.currently.windBearing + "-deg'></i>");
 			$("#humidity").html("Humidity: " + Math.round(data.currently.humidity * 100) + "%");
 			$("#dewPoint").html("Dew Point: " + Math.round(data.currently.dewPoint) + "<i class='wi wi-degrees'></i>");
@@ -163,11 +154,9 @@ function timeConverter(UNIX_timestamp){
   var day = days[a.getDay()];
 
   if(hour > 12) {
-  	return  date + " " + month + " " + year + " " + (hour-12) + ":" + ('0' + min).slice(-2) + " PM";
   	return day + ", " + month + " " + date + ", " + year + " " + (hour-12) + ":" + ('0' + min).slice(-2) + " PM";
   } 
   if(hour === 12) {
-  	return  date + " " + month + " " + year + " " + hour + ":" + ('0' + min).slice(-2) + " PM";
   	return day + ", " + month + " " + date + ", " + year + " " + hour + ":" + ('0' + min).slice(-2) + " PM";
 
   }
