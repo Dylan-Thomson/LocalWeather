@@ -73,50 +73,6 @@ var weatherTheme = {
 	}
 }
 
-$("#clearday").on("click", function() {
-		updateTheme("clear-day");
-});
-
-$("#clearnight").on("click", function() {
-		updateTheme("clear-night");
-});
-
-$("#rain").on("click", function() {
-		updateTheme("rain");
-});
-
-$("#snow").on("click", function() {
-		updateTheme("snow");
-});
-
-$("#sleet").on("click", function() {
-		updateTheme("sleet");
-});
-
-$("#windy").on("click", function() {
-		updateTheme("wind");
-});
-
-$("#fog").on("click", function() {
-		updateTheme("fog");
-});
-
-$("#cloudy").on("click", function() {
-		updateTheme("cloudy");
-});
-
-$("#pcd").on("click", function() {
-		updateTheme("partly-cloudy-day");
-});
-
-$("#pcn").on("click", function() {
-		updateTheme("partly-cloudy-night");
-});
-
-$("#pc").on("click", function() {
-		updateTheme("partly-cloudy");
-});
-
 if ("geolocation" in navigator) {
 	// Get location data
 	navigator.geolocation.getCurrentPosition(function(position) {
