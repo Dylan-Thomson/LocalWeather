@@ -179,7 +179,53 @@ function updateTheme(str) {
 		$("#weatherIconToday").removeClass();
 		$("#weatherIconToday").addClass("wi");
 		$("#weatherIconToday").addClass(weatherTheme[str].symbol);
-		$(".flex-container").css("background", weatherTheme[str].background);
-		$("#weatherIconToday").css("color", weatherTheme[str].symbolColor);
-		$(".flex-container").css("color", weatherTheme[str].color);
+		// $(".flex-container").css("background", weatherTheme[str].background);
+		// $("#weatherIconToday").css("color", weatherTheme[str].symbolColor);
+		// $(".flex-container").css("color", weatherTheme[str].color);
 }
+
+
+//BUTTONS FOR TESTING THEMES, REMOVE THESE
+// $("#clearday").on("click", function() {
+// 		updateTheme("clear-day");
+// });
+
+// $("#clearnight").on("click", function() {
+// 		updateTheme("clear-night");
+// });
+
+// $("#rain").on("click", function() {
+// 		updateTheme("rain");
+// });
+
+// $("#snow").on("click", function() {
+// 		updateTheme("snow");
+// });
+
+// $("#sleet").on("click", function() {
+// 		updateTheme("sleet");
+// });
+
+// $("#windy").on("click", function() {
+// 		updateTheme("wind");
+// });
+
+// $("#fog").on("click", function() {
+// 		updateTheme("fog");
+// });
+
+// $("#cloudy").on("click", function() {
+// 		updateTheme("cloudy");
+// });
+
+// $("#pcd").on("click", function() {
+// 		updateTheme("partly-cloudy-day");
+// });
+
+// $("#pcn").on("click", function() {
+// 		updateTheme("partly-cloudy-night");
+// });
+
+// $("#pc").on("click", function() {
+// 		updateTheme("partly-cloudy");
+// });
