@@ -1,4 +1,6 @@
 var temperature;
+var url;
+var fahrenheit = true;
 
 // Themes for each weather condition
 var weatherTheme = {
@@ -53,8 +55,7 @@ if ("geolocation" in navigator) {
 	// Get location data
 	navigator.geolocation.getCurrentPosition(function(position) {
 	  // Build URL
-		var url = "https://api.darksky.net/forecast/b2e8d595c58230947ca08220d0572147/" + position.coords.latitude + ",%20" + position.coords.longitude + "?lang=en&units=us&callback=?";
-		console.log(url);
+		url = "https://api.darksky.net/forecast/b2e8d595c58230947ca08220d0572147/" + position.coords.latitude + ",%20" + position.coords.longitude + "?lang=en";
 
 		// Get city data -- I would use Google Maps for this, but I don't want to publicly display more API keys than I have to :)
 		$.getJSON("http://ip-api.com/json/?callback=?", function(data) {
@@ -62,7 +63,7 @@ if ("geolocation" in navigator) {
 		});
 
 		// Get weather data
-		$.getJSON(url, function(data) {
+		$.getJSON((url + "&units=us&callback=?"), function(data) {
 			console.log(data);
 			$(".fa-spinner").addClass("hidden");
 			$(".row").removeClass("hidden");
