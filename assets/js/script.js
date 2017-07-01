@@ -1,74 +1,51 @@
 var temperature;
 
 // Themes for each weather condition
-// TODO: Move styles to CSS using classes
 var weatherTheme = {
 	"clear-day": {
 		symbol: "wi-day-sunny",
-		background: "rgb(189, 247, 255)",
-		symbolColor: "rgb(255, 203, 90)",
-		color: "rgb(255, 255, 255)"
+		background: "rgb(0, 191, 255)"
 	},
 
 	"clear-night": {
 		symbol: "wi-night-clear",
-		background: "rgb(75, 89, 94)",
-		symbolColor: "rgb(233, 227, 211)",
-		color: "rgb(255, 255, 255)"
+		background: "rgb(0, 24, 72)"
 	},
 	"rain": {
 		symbol: "wi-rain",
-		background: "rgb(138, 208, 205)",
-		symbolColor: "rgb(55, 142, 139)",
-		color: "rgb(255, 255, 255)"
+		background: "rgb(117, 149, 191)"
 	},
 	"snow": {
 		symbol: "wi-snow",
-		background: "rgb(75, 89, 94)",
-		symbolColor: "rgb(255,250,250)",
-		color: "rgb(255, 255, 255)"
+		background: "rgb(117, 149, 191)"
 	},
 	"sleet": {
 		symbol: "wi-sleet",
-		background: "rgb(75, 89, 94)",
-		symbolColor: "rgb(142, 195, 195)",
-		color: "rgb(255, 255, 255)"
+		background: "rgb(117, 149, 191)"
 	},
 	"wind": {
 		symbol: "wi-windy",
-		background: "rgb(90, 89, 104)",
-		symbolColor: "rgb(235, 233, 218)",
-		color: "rgb(235, 233, 218)"
+		background: "rgb(117, 149, 191)"
 	},
 	"fog": {
 		symbol: "wi-fog",
-		background:	"rgb(90, 89, 104)",
-		symbolColor: "rgb(154, 153, 163)",
-		color: "rgb(255, 255, 255)"
+		background:	"rgb(117, 149, 191)"
 	},
 	"cloudy": {
 		symbol: "wi-cloudy",
-		background:	"rgb(90, 89, 104)",
-		symbolColor: "rgb(154, 153, 163)",
-		color: "rgb(255, 255, 255)"
+		background:	"rgb(117, 149, 191)"
 	},
 	"partly-cloudy-day": {
 		symbol: "wi-day-cloudy",
-		background: "rgb(138, 208, 206)",
-		symbolColor: "rgb(255, 214, 134)",
-		color: "rgb(255, 255, 255)"
+		background: "rgb(0, 191, 255)"
 	},
 	"partly-cloudy-night": {
 		symbol: "wi-night-alt-cloudy",
-		background: "rgb(75, 89, 94)",
-		symbolColor: "rgb(133, 143, 146)",
-		color: "rgb(255, 255, 255)"
+		background: "rgb(0, 24, 72)"
 	},
 	"partly-cloudy": {
-		symbol: "wi-day-cloudy",
-		background: "rgb(138, 208, 206)",
-		symbolColor: "rgb(255, 255, 255)",
-		color: "rgb(255, 255, 255)"
+		symbol: "wi-cloud",
+		background: "rgb(117, 149, 191)"
 	}
 }
 
