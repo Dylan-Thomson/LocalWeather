@@ -107,7 +107,7 @@ function updateWeather(data) {
 	$("#currentlySummary").text(data.currently.summary);
 	$("#minutelySummary").text(data.minutely.summary);
 
-	if(data.alerts.length > 0) {
+	if(data.alerts) {
 		$("#alerts").html("");
 		data.alerts.forEach(function(alert) {
 			$("#alerts").append("<i class='fa fa-exclamation-triangle' aria-hidden='true'></i> " + "<a href='" + alert.uri + "' target='_blank'>" + alert.title + "</a>");
