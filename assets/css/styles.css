@@ -10,7 +10,6 @@
 	-webkit-align-items: center;
 	align-items: center;
 	text-align: center;
-	background: rgb(25, 25, 25);
 }
 
 .row {
@@ -29,10 +28,6 @@
 	width: 100%;
 }
 
-/*#temperature:hover {
-	color: red;
-}
-*/
 #time {
 	font-style: italic;
 }
