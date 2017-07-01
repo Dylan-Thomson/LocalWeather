@@ -51,6 +51,8 @@ var weatherTheme = {
 	}
 }
 
+//TODO CLEANUP CONSOLE.LOGS
+
 if ("geolocation" in navigator) {
 	// Get location data
 	navigator.geolocation.getCurrentPosition(function(position) {
@@ -108,7 +110,7 @@ function updateWeather(data) {
 	if(data.alerts.length > 0) {
 		$("#alerts").html("");
 		data.alerts.forEach(function(alert) {
-			$("#alerts").append("<i class='fa fa-exclamation-triangle' aria-hidden='true'></i> " + alert.title);
+			$("#alerts").append("<i class='fa fa-exclamation-triangle' aria-hidden='true'></i> " + "<a href='" + alert.uri + "' target='_blank'>" + alert.title + "</a>");
 		});
 	}
 

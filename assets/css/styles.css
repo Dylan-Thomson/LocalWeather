@@ -65,6 +65,14 @@
 	color: red;
 }
 
+#alerts a {
+	color: red;
+}
+
+#alerts a:hover {
+	color: red;
+}
+
 /*Toggle Switch*/
 .switch-container {
 	font-size: 3em;
