@@ -58,7 +58,6 @@ if ("geolocation" in navigator) {
 
 		// Get city data -- I would use Google Maps for this, but I don't want to publicly display more API keys than I have to :)
 		$.getJSON("http://ip-api.com/json/?callback=?", function(data) {
-			console.log(data.city)
 			$("#location").html("<i class='fa fa-map-marker' aria-hidden='true'></i> " + data.city + ", " + data.regionName + " - " + data.country);
 		});
 
@@ -69,21 +68,8 @@ if ("geolocation" in navigator) {
 			$(".row").removeClass("hidden");
 
 			// Update page with weather data
-			temperature = Math.round(data.currently.temperature);
-			$("#time").text(timeConverter(data.currently.time));
-			$("#temperature").html(temperature + "<i class='wi wi-fahrenheit'></i>");
-			$("#weatherIconToday").addClass(weatherTheme[data.currently.icon].symbol);
+			updateWeather(data);
 
-			$("#currentlySummary").text(data.currently.summary);
-			$("#minutelySummary").text(data.minutely.summary);
-			$("#hourlySummary").text(data.hourly.summary);
-			$("#wind").html("Wind: " + Math.round(data.currently.windSpeed) + " MPH" + " <i class='wi wi-wind from-" + data.currently.windBearing + "-deg'></i>");
-			$("#humidity").html("Humidity: " + Math.round(data.currently.humidity * 100) + "%");
-			$("#dewPoint").html("Dew Point: " + Math.round(data.currently.dewPoint) + "<i class='wi wi-degrees'></i>");
-			$("#uvIndex").html("UV Index: " + data.currently.uvIndex);
-			$("#visibility").html("Visibility: " + data.currently.visibility + " miles");
-
-			$("#pressure").html("Air Pressure:" + Math.round(data.currently.pressure) + " mB");
 			// Style new content
 			updateTheme(data.currently.icon);
 		});
@@ -96,21 +82,6 @@ else {
 $(".slider").on("click", function() {
 	fahrenheit = !fahrenheit;
 
-// Convert Temperature between F and C
-var fahrenheit = true;
-// $("#temperature").on("click", function() {
-// 	// TODO: Refractor
-// 	if(fahrenheit) {
-// 		temperature = fahrenheitToCelsius(temperature);
-// 		$("#temperature").html(Math.round(temperature) + "<i class='wi wi-celsius'></i>");
-// 		fahrenheit = false;
-// 	}
-// 	else {
-// 		temperature = celsiusToFahrenheit(temperature);
-// 		$("#temperature").html(Math.round(temperature) + "<i class='wi wi-fahrenheit'></i>");
-// 		fahrenheit = true;
-// 	}
-// });
 	if (fahrenheit) {
 		$.getJSON((url + "&units=us&callback=?"), function(data) {
 			updateWeather(data);
@@ -127,6 +98,47 @@ var fahrenheit = true;
 	}
 });
 
+function updateWeather(data) {	
+	$("#time").text(timeConverter(data.currently.time));
+	$("#weatherIconToday").addClass(weatherTheme[data.currently.icon].symbol);
+	$("#currentlySummary").text(data.currently.summary);
+	$("#minutelySummary").text(data.minutely.summary);
+
+	if(data.alerts.length > 0) {
+		$("#alerts").html("");
+		data.alerts.forEach(function(alert) {
+			$("#alerts").append("<i class='fa fa-exclamation-triangle' aria-hidden='true'></i> " + alert.title);
+		});
+	}
+
+	if(fahrenheit) {
+		$("#temperature").html(Math.round(data.currently.temperature) + "<i class='wi wi-fahrenheit'></i>");
+		$("#hourlySummary").text(data.hourly.summary);
+		$("#wind").html("Wind: " + Math.round(data.currently.windSpeed) + " mph" + " <i class='wi wi-wind from-" + data.currently.windBearing + "-deg'></i>");
+		$("#humidity").html("Humidity: " + Math.round(data.currently.humidity * 100) + "%");
+		$("#dewPoint").html("Dew Point: " + Math.round(data.currently.dewPoint) + "<i class='wi wi-degrees'></i>");
+		$("#uvIndex").html("UV Index: " + data.currently.uvIndex);
+		$("#visibility").html("Visibility: " + Math.round(data.currently.visibility) + " miles");
+		$("#pressure").html("Air Pressure:" + Math.round(data.currently.pressure) + " mB");		
+	}
+	else {
+		$("#temperature").html(Math.round(data.currently.temperature) + "<i class='wi wi-celsius'></i>");
+		$("#hourlySummary").text(data.hourly.summary);
+		$("#wind").html("Wind: " + Math.round(data.currently.windSpeed) + " m/s" + " <i class='wi wi-wind from-" + data.currently.windBearing + "-deg'></i>");
+		$("#humidity").html("Humidity: " + Math.round(data.currently.humidity * 100) + "%");
+		$("#dewPoint").html("Dew Point: " + Math.round(data.currently.dewPoint) + "<i class='wi wi-degrees'></i>");
+		$("#uvIndex").html("UV Index: " + data.currently.uvIndex);
+		$("#visibility").html("Visibility: " + Math.round(data.currently.visibility) + " km");
+		$("#pressure").html("Air Pressure:" + Math.round(data.currently.pressure) + " hPa");		
+	}
+}
+
+function updateTheme(str) {
+		$("#weatherIconToday").removeClass();
+		$("#weatherIconToday").addClass("wi");
+		$("#weatherIconToday").addClass(weatherTheme[str].symbol);
+		$(".flex-container").css("background", weatherTheme[str].background);
+}
 
 function fahrenheitToCelsius(temp) {
 	return ((temp - 32) * 5)/9;
@@ -158,15 +170,6 @@ function timeConverter(UNIX_timestamp){
   return day + ", " + month + " " + date + ", " + year + " " + hour + ":" + ('0' + min).slice(-2) + " AM";
 }
 
-//TODO replace css with addclass
-function updateTheme(str) {
-		$("#weatherIconToday").removeClass();
-		$("#weatherIconToday").addClass("wi");
-		$("#weatherIconToday").addClass(weatherTheme[str].symbol);
-		// $(".flex-container").css("background", weatherTheme[str].background);
-		// $("#weatherIconToday").css("color", weatherTheme[str].symbolColor);
-		// $(".flex-container").css("color", weatherTheme[str].color);
-}
 
 
 //BUTTONS FOR TESTING THEMES, REMOVE THESE
