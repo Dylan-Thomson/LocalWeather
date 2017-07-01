@@ -41,11 +41,11 @@ var weatherTheme = {
 	},
 	"partly-cloudy-day": {
 		symbol: "wi-day-cloudy",
-		background: "rgb(0, 191, 255)"
+		background: "rgb(117, 149, 191)"
 	},
 	"partly-cloudy-night": {
 		symbol: "wi-night-alt-cloudy",
-		background: "rgb(0, 24, 72)"
+		background: "rgb(117, 149, 191)"
 	},
 	"partly-cloudy": {
 		symbol: "wi-cloud",
