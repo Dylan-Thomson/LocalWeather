@@ -73,6 +73,14 @@
 	color: red;
 }
 
+#darksky a {
+	color: #fff;
+}
+
+#darksky a:hover {
+	color: #fff;
+}
+
 /*Toggle Switch*/
 .switch-container {
 	font-size: 3em;
