@@ -82,6 +82,7 @@ if ("geolocation" in navigator) {
 	});
 }
 else {
+	onPageLoad();
 	$("#summary").text("GEOLOCATION IS NOT SUPPORTED BY YOUR BROWSER");
 }
 
@@ -95,7 +96,6 @@ $(".slider").on("click", function() {
 	else {
 		updateWeather(siData);
 		updateTheme(siData.currently.icon);
-
 	}
 });
 
@@ -137,8 +137,7 @@ function updateWeather(data) {
 
 function initWeatherDataUS(url, callback) {
 	$.getJSON((url + "&units=us&callback=?"), function(data) {
-		$(".fa-spinner").addClass("hidden");
-		$(".row").removeClass("hidden");
+		onPageLoad();
 		
 		// Update page with weather data
 		updateWeather(data);
@@ -190,6 +189,11 @@ function timeConverter(UNIX_timestamp){
   return day + ", " + month + " " + date + ", " + year + " " + hour + ":" + ('0' + min).slice(-2) + " AM";
 }
 
+// Hide spinner and unhide rows
+function onPageLoad() {
+	$(".fa-spinner").addClass("hidden");
+	$(".row").removeClass("hidden");
+}
 
 
 //BUTTONS FOR TESTING THEMES, REMOVE THESE
