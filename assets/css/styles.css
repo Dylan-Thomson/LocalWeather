@@ -57,6 +57,14 @@
 #weatherData div {
 	display: inline-block;
 	margin: auto 5px;
+}
+
+#alerts{
+	font-size: 2em;
+	list-style: none;
+	color: red;
+}
+
 /*Toggle Switch*/
 .switch-container {
 	font-size: 3em;
