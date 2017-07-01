@@ -161,7 +161,12 @@ function getWeatherDataSI(url, callback) {
 
 // Update weather icon and background color
 function updateTheme(str) {
-		$("#weatherIconToday").removeClass().addClass("wi " + weatherTheme[str].symbol);
+		if(weatherTheme[str].symbol) {
+			$("#weatherIconToday").removeClass().addClass("wi " + weatherTheme[str].symbol);
+		}
+		else {
+			$("#weatherIconToday").removeClass().addClass("wi " + "wi-storm-showers");
+		}
 		$(".flex-container").removeClass().addClass("flex-container container-fluid " + weatherTheme[str].background);
 
 }
