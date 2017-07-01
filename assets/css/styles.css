@@ -10,6 +10,8 @@
 	-webkit-align-items: center;
 	align-items: center;
 	text-align: center;
+
+	background: rgb(75, 89, 94);
 }
 
 .row {
@@ -135,13 +137,43 @@ input:checked + .slider:before {
 
 /*Theme classes*/
 .clearDay {
-	background: rgb(0, 191, 255);
+	background: rgb(30, 144, 255);
+
 }
 
 .clearNight {
-	background: rgb(0, 24, 72);
+	background: rgb(34, 41, 64);
+}
+
+
+.rain {
+	background: rgb(86, 111, 151);
+}
+
+.snow, .sleet {
+	background: rgb(64, 65, 95);
+}
+.wind {
+	background: rgb(117, 135, 149)
+}
+
+.fog {
+	background: rgb(111, 106, 121);
+
 }
 
 .cloudy {
 	background: rgb(117, 149, 191);
+}
+
+.pcDay {
+	background: rgb(156, 175, 242);
+}
+
+.pcNight {
+	background: rgb(24, 31, 54);
+}
+
+.pc {
+	background: rgb(143, 168, 238);
 }

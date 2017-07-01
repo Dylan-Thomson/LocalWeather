@@ -17,23 +17,23 @@ var weatherTheme = {
 	},
 	"rain": {
 		symbol: "wi-rain",
-		background: "cloudy"
+		background: "rain"
 	},
 	"snow": {
 		symbol: "wi-snow",
-		background: "cloudy"
+		background: "snow"
 	},
 	"sleet": {
 		symbol: "wi-sleet",
-		background: "cloudy"
+		background: "sleet"
 	},
 	"wind": {
 		symbol: "wi-windy",
-		background: "cloudy"
+		background: "wind"
 	},
 	"fog": {
 		symbol: "wi-fog",
-		background:	"cloudy"
+		background:	"fog"
 	},
 	"cloudy": {
 		symbol: "wi-cloudy",
@@ -41,15 +41,15 @@ var weatherTheme = {
 	},
 	"partly-cloudy-day": {
 		symbol: "wi-day-cloudy",
-		background: "cloudy"
+		background: "pcDay"
 	},
 	"partly-cloudy-night": {
 		symbol: "wi-night-alt-cloudy",
-		background: "cloudy"
+		background: "pcNight"
 	},
 	"partly-cloudy": {
 		symbol: "wi-cloud",
-		background: "cloudy"
+		background: "pc"
 	}
 }
 
