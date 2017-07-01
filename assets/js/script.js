@@ -116,6 +116,8 @@ else {
 	$("#summary").text("GEOLOCATION IS NOT SUPPORTED BY YOUR BROWSER");
 }
 
+$(".slider").on("click", function() {
+	fahrenheit = !fahrenheit;
 
 // Convert Temperature between F and C
 var fahrenheit = true;
@@ -132,6 +134,22 @@ var fahrenheit = true;
 // 		fahrenheit = true;
 // 	}
 // });
+	if (fahrenheit) {
+		$.getJSON((url + "&units=us&callback=?"), function(data) {
+			updateWeather(data);
+			updateTheme(data.currently.icon);
+			console.log(data)
+		});
+	}
+	else {
+		$.getJSON((url + "&units=si&callback=?"), function(data) {
+			updateWeather(data);
+			updateTheme(data.currently.icon);
+			console.log(data);
+		});	
+	}
+});
+
 
 function fahrenheitToCelsius(temp) {
 	return ((temp - 32) * 5)/9;
