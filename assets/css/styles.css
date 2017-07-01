@@ -34,6 +34,7 @@
 
 #weather {
 	font-size: 4em;
+	margin: auto 1em;
 }
 
 #location, #hourlySummary {
@@ -42,6 +43,10 @@
 
 #minutelySummary, #time, .btn {
 	font-size: 	1.5em;
+}
+
+#hourlySummary, #minutelySummary {
+	margin: 1em;
 }
 
 #weatherData {
