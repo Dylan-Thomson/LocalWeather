@@ -53,8 +53,6 @@ var weatherTheme = {
 	}
 }
 
-// TODO CLEANUP CONSOLE.LOGS
-
 if ("geolocation" in navigator) {
 	// Get location data
 	navigator.geolocation.getCurrentPosition(function(position) {
@@ -86,6 +84,7 @@ else {
 	$("#summary").text("GEOLOCATION IS NOT SUPPORTED BY YOUR BROWSER");
 }
 
+// Change units when toggle switch is clicked
 $(".slider").on("click", function() {
 	fahrenheit = !fahrenheit;
 
@@ -200,7 +199,7 @@ function onPageLoad() {
 }
 
 
-//BUTTONS FOR TESTING THEMES, REMOVE THESE
+// BUTTONS FOR TESTING THEMES, REMOVE THESE
 // $("#clearday").on("click", function() {
 // 		updateTheme("clear-day");
 // });
