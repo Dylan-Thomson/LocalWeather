@@ -132,3 +132,16 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
+/*Theme classes*/
+.clearDay {
+	background: rgb(0, 191, 255);
+}
+
+.clearNight {
+	background: rgb(0, 24, 72);
+}
+
+.cloudy {
+	background: rgb(117, 149, 191);
+}

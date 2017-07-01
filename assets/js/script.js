@@ -8,48 +8,48 @@ var fahrenheit = true;
 var weatherTheme = {
 	"clear-day": {
 		symbol: "wi-day-sunny",
-		background: "rgb(0, 191, 255)"
+		background: "clearDay"
 	},
 
 	"clear-night": {
 		symbol: "wi-night-clear",
-		background: "rgb(0, 24, 72)"
+		background: "clearNight"
 	},
 	"rain": {
 		symbol: "wi-rain",
-		background: "rgb(117, 149, 191)"
+		background: "cloudy"
 	},
 	"snow": {
 		symbol: "wi-snow",
-		background: "rgb(117, 149, 191)"
+		background: "cloudy"
 	},
 	"sleet": {
 		symbol: "wi-sleet",
-		background: "rgb(117, 149, 191)"
+		background: "cloudy"
 	},
 	"wind": {
 		symbol: "wi-windy",
-		background: "rgb(117, 149, 191)"
+		background: "cloudy"
 	},
 	"fog": {
 		symbol: "wi-fog",
-		background:	"rgb(117, 149, 191)"
+		background:	"cloudy"
 	},
 	"cloudy": {
 		symbol: "wi-cloudy",
-		background:	"rgb(117, 149, 191)"
+		background:	"cloudy"
 	},
 	"partly-cloudy-day": {
 		symbol: "wi-day-cloudy",
-		background: "rgb(117, 149, 191)"
+		background: "cloudy"
 	},
 	"partly-cloudy-night": {
 		symbol: "wi-night-alt-cloudy",
-		background: "rgb(117, 149, 191)"
+		background: "cloudy"
 	},
 	"partly-cloudy": {
 		symbol: "wi-cloud",
-		background: "rgb(117, 149, 191)"
+		background: "cloudy"
 	}
 }
 
@@ -161,10 +161,9 @@ function getWeatherDataSI(url, callback) {
 
 // Update weather icon and background color
 function updateTheme(str) {
-		$("#weatherIconToday").removeClass();
-		$("#weatherIconToday").addClass("wi");
-		$("#weatherIconToday").addClass(weatherTheme[str].symbol);
-		$(".flex-container").css("background", weatherTheme[str].background);
+		$("#weatherIconToday").removeClass().addClass("wi " + weatherTheme[str].symbol);
+		$(".flex-container").removeClass().addClass("flex-container container-fluid " + weatherTheme[str].background);
+
 }
 
 // TODO: Refractor
