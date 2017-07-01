@@ -1,5 +1,7 @@
 var temperature;
-var url;
+var url = "";
+var usData = {};
+var siData = {};
 var fahrenheit = true;
 
 // Themes for each weather condition
@@ -51,11 +53,12 @@ var weatherTheme = {
 	}
 }
 
-//TODO CLEANUP CONSOLE.LOGS
+// TODO CLEANUP CONSOLE.LOGS
 
 if ("geolocation" in navigator) {
 	// Get location data
 	navigator.geolocation.getCurrentPosition(function(position) {
+		
 	  // Build URL
 		url = "https://api.darksky.net/forecast/b2e8d595c58230947ca08220d0572147/" + position.coords.latitude + ",%20" + position.coords.longitude + "?lang=en";
 
@@ -64,18 +67,18 @@ if ("geolocation" in navigator) {
 			$("#location").html("<i class='fa fa-map-marker' aria-hidden='true'></i> " + data.city + ", " + data.regionName + " - " + data.country);
 		});
 
-		// Get weather data
-		$.getJSON((url + "&units=us&callback=?"), function(data) {
-			console.log(data);
-			$(".fa-spinner").addClass("hidden");
-			$(".row").removeClass("hidden");
-
-			// Update page with weather data
-			updateWeather(data);
-
-			// Style new content
-			updateTheme(data.currently.icon);
+		// Initialize page with weather data
+		initWeatherDataUS(url, function(data) {
+			// Save US data
+			usData = data;
 		});
+
+		// Also get weather data in SI units
+		getWeatherDataSI(url, function(data) {
+			// Save SI data
+			siData = data;
+		});
+
 	});
 }
 else {
@@ -86,21 +89,17 @@ $(".slider").on("click", function() {
 	fahrenheit = !fahrenheit;
 
 	if (fahrenheit) {
-		$.getJSON((url + "&units=us&callback=?"), function(data) {
-			updateWeather(data);
-			updateTheme(data.currently.icon);
-			console.log(data)
-		});
+		updateWeather(usData);
+		updateTheme(usData.currently.icon);
 	}
 	else {
-		$.getJSON((url + "&units=si&callback=?"), function(data) {
-			updateWeather(data);
-			updateTheme(data.currently.icon);
-			console.log(data);
-		});	
+		updateWeather(siData);
+		updateTheme(siData.currently.icon);
+
 	}
 });
 
+// TODO Refractor
 function updateWeather(data) {	
 	$("#time").text(timeConverter(data.currently.time));
 	$("#weatherIconToday").addClass(weatherTheme[data.currently.icon].symbol);
@@ -136,19 +135,37 @@ function updateWeather(data) {
 	}
 }
 
+function initWeatherDataUS(url, callback) {
+	$.getJSON((url + "&units=us&callback=?"), function(data) {
+		$(".fa-spinner").addClass("hidden");
+		$(".row").removeClass("hidden");
+		
+		// Update page with weather data
+		updateWeather(data);
+
+		// Style new content
+		updateTheme(data.currently.icon);
+
+		if(callback) {
+			callback(data);
+		}
+	});
+}
+
+function getWeatherDataSI(url, callback) {
+	$.getJSON((url + "&units=si&callback=?"), function(data) {
+		if(callback) {
+			callback(data);
+		}
+	});	
+}
+
+// Update weather icon and background color
 function updateTheme(str) {
 		$("#weatherIconToday").removeClass();
 		$("#weatherIconToday").addClass("wi");
 		$("#weatherIconToday").addClass(weatherTheme[str].symbol);
 		$(".flex-container").css("background", weatherTheme[str].background);
-}
-
-function fahrenheitToCelsius(temp) {
-	return ((temp - 32) * 5)/9;
-}
-
-function celsiusToFahrenheit(temp) {
-	return (temp * 9)/5 + 32;
 }
 
 // TODO: Refractor
