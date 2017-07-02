@@ -10,7 +10,7 @@ $(document).ready(function() {
 // Themes for each weather condition
 var weatherTheme = {
 	"default": {
-		symbol: "wi-storm-showers",
+		symbol: "wi-na",
 		background: "rain"
 	},
 	"clear-day": {
