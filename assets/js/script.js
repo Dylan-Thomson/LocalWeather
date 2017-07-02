@@ -11,6 +11,10 @@ $(document).ready(function() {
 
 // Themes for each weather condition
 var weatherTheme = {
+	"default": {
+		symbol: "wi-storm-showers",
+		background: "rain"
+	},
 	"clear-day": {
 		symbol: "wi-day-sunny",
 		background: "clearDay"
@@ -172,7 +176,8 @@ function updateTheme(str) {
 			$("#weatherIconToday").removeClass().addClass("wi " + weatherTheme[str].symbol);
 		}
 		else {
-			$("#weatherIconToday").removeClass().addClass("wi " + "wi-storm-showers");
+			$("#weatherIconToday").removeClass().addClass("wi " + weatherTheme["default"].symbol);
+			$(".flex-container").removeClass().addClass("flex-container container-fluid " + weatherTheme["default"].background);
 		}
 		$(".flex-container").removeClass().addClass("flex-container container-fluid " + weatherTheme[str].background);
 
