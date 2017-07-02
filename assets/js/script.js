@@ -10,7 +10,6 @@ var weatherTheme = {
 		symbol: "wi-day-sunny",
 		background: "clearDay"
 	},
-
 	"clear-night": {
 		symbol: "wi-night-clear",
 		background: "clearNight"
@@ -60,10 +59,11 @@ if ("geolocation" in navigator) {
 	  // Build URL
 		url = "https://api.darksky.net/forecast/b2e8d595c58230947ca08220d0572147/" + position.coords.latitude + ",%20" + position.coords.longitude + "?lang=en";
 
-		// Get city data -- I would use Google Maps for this, but I don't want to publicly display more API keys than I have to :)
-		$.getJSON("http://ip-api.com/json/?callback=?", function(data) {
-			$("#location").html("<i class='fa fa-map-marker' aria-hidden='true'></i> " + data.city + ", " + data.regionName + " - " + data.country);
+		// Get city data 
+		$.getJSON("https://maps.googleapis.com/maps/api/geocode/json?latlng=" + position.coords.latitude + "," + position.coords.longitude + "&key=AIzaSyCC_hAkRMemvf2aFYjZ0_EibEM0X7FAh4E", function(data) {
+			$("#location").html("<i class='fa fa-map-marker' aria-hidden='true'></i> " + data.results[0].formatted_address);
 		});
+
 
 		// Initialize page with weather data
 		initWeatherDataUS(url, function(data) {

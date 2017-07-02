@@ -17,7 +17,6 @@
 	border-radius: 5px;
 	padding-top: 1em;
 	color: #FFF;
-
 }
 
 .col-xs-12 {
@@ -175,3 +174,4 @@ input:checked + .slider:before {
 .pc {
 	background: rgb(143, 168, 238);
 }
+
