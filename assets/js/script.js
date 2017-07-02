@@ -4,6 +4,11 @@ var usData = {};
 var siData = {};
 var fahrenheit = true;
 
+// Get location and populate page with weather data
+$(document).ready(function() {
+	init();
+});
+
 // Themes for each weather condition
 var weatherTheme = {
 	"clear-day": {
@@ -52,51 +57,54 @@ var weatherTheme = {
 	}
 }
 
-if ("geolocation" in navigator) {
+// Get location/weather data and update page
+function init() {
 	// Get location data
-	navigator.geolocation.getCurrentPosition(function(position) {
-		
-	  // Build URL
-		url = "https://api.darksky.net/forecast/b2e8d595c58230947ca08220d0572147/" + position.coords.latitude + ",%20" + position.coords.longitude + "?lang=en";
+	if ("geolocation" in navigator) {
+		navigator.geolocation.getCurrentPosition(function(position) {
+			
+		  // Build URL
+			url = "https://api.darksky.net/forecast/b2e8d595c58230947ca08220d0572147/" + position.coords.latitude + ",%20" + position.coords.longitude + "?lang=en";
 
-		// Get city data 
-		$.getJSON("https://maps.googleapis.com/maps/api/geocode/json?latlng=" + position.coords.latitude + "," + position.coords.longitude + "&key=AIzaSyCC_hAkRMemvf2aFYjZ0_EibEM0X7FAh4E", function(data) {
-			$("#location").html("<i class='fa fa-map-marker' aria-hidden='true'></i> " + data.results[0].formatted_address);
+			// Get city data 
+			$.getJSON("https://maps.googleapis.com/maps/api/geocode/json?latlng=" + position.coords.latitude + "," + position.coords.longitude + "&key=AIzaSyCC_hAkRMemvf2aFYjZ0_EibEM0X7FAh4E", function(data) {
+				$("#location").html("<i class='fa fa-map-marker' aria-hidden='true'></i> " + data.results[0].formatted_address);
+			});
+
+
+			// Initialize page with weather data
+			initWeatherDataUS(url, function(data) {
+				// Save US data
+				usData = data;
+			});
+
+			// Also get weather data in SI units
+			getWeatherDataSI(url, function(data) {
+				// Save SI data
+				siData = data;
+			});
+
 		});
-
-
-		// Initialize page with weather data
-		initWeatherDataUS(url, function(data) {
-			// Save US data
-			usData = data;
-		});
-
-		// Also get weather data in SI units
-		getWeatherDataSI(url, function(data) {
-			// Save SI data
-			siData = data;
-		});
-
-	});
-}
-else {
-	onPageLoad();
-	$("#summary").text("GEOLOCATION IS NOT SUPPORTED BY YOUR BROWSER");
-}
-
-// Change units when toggle switch is clicked
-$(".slider").on("click", function() {
-	fahrenheit = !fahrenheit;
-
-	if (fahrenheit) {
-		updateWeather(usData);
-		updateTheme(usData.currently.icon);
 	}
 	else {
-		updateWeather(siData);
-		updateTheme(siData.currently.icon);
+		onPageLoad();
+		$("#summary").text("GEOLOCATION IS NOT SUPPORTED BY YOUR BROWSER");
 	}
-});
+
+	// Change units when toggle switch is clicked
+	$(".slider").on("click", function() {
+		fahrenheit = !fahrenheit;
+
+		if (fahrenheit) {
+			updateWeather(usData);
+			updateTheme(usData.currently.icon);
+		}
+		else {
+			updateWeather(siData);
+			updateTheme(siData.currently.icon);
+		}
+	});
+}
 
 // TODO Refractor
 function updateWeather(data) {	
