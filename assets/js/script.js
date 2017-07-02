@@ -1,7 +1,6 @@
 var temperature;
 var url = "";
 var usData = {};
-var siData = {};
 var fahrenheit = true;
 
 // Get location and populate page with weather data
@@ -75,18 +74,12 @@ function init() {
 				$("#location").html("<i class='fa fa-map-marker' aria-hidden='true'></i> " + data.results[0].formatted_address);
 			});
 
-
 			// Initialize page with weather data
 			initWeatherDataUS(url, function(data) {
 				// Save US data
 				usData = data;
 			});
 
-			// Also get weather data in SI units
-			getWeatherDataSI(url, function(data) {
-				// Save SI data
-				siData = data;
-			});
 
 		});
 	}
@@ -100,49 +93,14 @@ function init() {
 		fahrenheit = !fahrenheit;
 
 		if (fahrenheit) {
-			updateWeather(usData);
+			displayUnitsUS(usData);
 			updateTheme(usData.currently.icon);
 		}
 		else {
-			updateWeather(siData);
-			updateTheme(siData.currently.icon);
+			displayUnitsSI(usData);
+			updateTheme(usData.currently.icon);
 		}
 	});
-}
-
-// TODO Refractor
-function updateWeather(data) {	
-	$("#time").text(timeConverter(data.currently.time));
-	$("#weatherIconToday").addClass(weatherTheme[data.currently.icon].symbol);
-	$("#currentlySummary").text(data.currently.summary);
-	$("#minutelySummary").text(data.minutely.summary);
-	$("#hourlySummary").text(data.hourly.summary);
-
-	if(fahrenheit) {
-		$("#temperature").html(Math.round(data.currently.temperature) + "<i class='wi wi-fahrenheit'></i>");
-		$("#wind").html("Wind: " + Math.round(data.currently.windSpeed) + " mph" + " <i class='wi wi-wind from-" + data.currently.windBearing + "-deg'></i>");
-		$("#humidity").html("Humidity: " + Math.round(data.currently.humidity * 100) + "%");
-		$("#dewPoint").html("Dew Point: " + Math.round(data.currently.dewPoint) + "<i class='wi wi-degrees'></i>");
-		$("#uvIndex").html("UV Index: " + data.currently.uvIndex);
-		$("#visibility").html("Visibility: " + Math.round(data.currently.visibility) + " miles");
-		$("#pressure").html("Air Pressure:" + Math.round(data.currently.pressure) + " mB");		
-	}
-	else {
-		$("#temperature").html(Math.round(data.currently.temperature) + "<i class='wi wi-celsius'></i>");
-		$("#wind").html("Wind: " + Math.round(data.currently.windSpeed) + " m/s" + " <i class='wi wi-wind from-" + data.currently.windBearing + "-deg'></i>");
-		$("#humidity").html("Humidity: " + Math.round(data.currently.humidity * 100) + "%");
-		$("#dewPoint").html("Dew Point: " + Math.round(data.currently.dewPoint) + "<i class='wi wi-degrees'></i>");
-		$("#uvIndex").html("UV Index: " + data.currently.uvIndex);
-		$("#visibility").html("Visibility: " + Math.round(data.currently.visibility) + " km");
-		$("#pressure").html("Air Pressure:" + Math.round(data.currently.pressure) + " hPa");		
-	}
-	
-	if(data.alerts) {
-		$("#alerts").html("");
-		data.alerts.forEach(function(alert) {
-			$("#alerts").append("<i class='fa fa-exclamation-triangle' aria-hidden='true'></i> " + "<a href='" + alert.uri + "' target='_blank'>" + alert.title + "</a>");
-		});
-	}
 }
 
 function initWeatherDataUS(url, callback) {
@@ -150,7 +108,7 @@ function initWeatherDataUS(url, callback) {
 		onPageLoad();
 		
 		// Update page with weather data
-		updateWeather(data);
+		displayWeather(data);
 
 		// Style new content
 		updateTheme(data.currently.icon);
@@ -161,12 +119,44 @@ function initWeatherDataUS(url, callback) {
 	});
 }
 
-function getWeatherDataSI(url, callback) {
-	$.getJSON((url + "&units=si&callback=?"), function(data) {
-		if(callback) {
-			callback(data);
-		}
-	});	
+function displayWeather(data) {
+	// Display unit independent content
+	$("#time").text(timeConverter(data.currently.time));
+	$("#weatherIconToday").addClass(weatherTheme[data.currently.icon].symbol);
+	$("#currentlySummary").text(data.currently.summary);
+	$("#minutelySummary").text(data.minutely.summary);
+	$("#hourlySummary").text(data.hourly.summary);
+	$("#humidity").html("Humidity: " + Math.round(data.currently.humidity * 100) + "%");
+	$("#uvIndex").html("UV Index: " + data.currently.uvIndex);
+
+	// Display alerts if any
+	if(data.alerts) {
+		$("#alerts").html("");
+		data.alerts.forEach(function(alert) {
+			$("#alerts").append("<i class='fa fa-exclamation-triangle' aria-hidden='true'></i> " + "<a href='" + alert.uri + "' target='_blank'>" + alert.title + "</a>");
+		});
+	}
+
+	// Display data using US units
+	displayUnitsUS(data);
+}
+
+// Update data with US units
+function displayUnitsUS(data) {
+	$("#temperature").html(Math.round(data.currently.temperature) + "<i class='wi wi-fahrenheit'></i>");
+	$("#wind").html("Wind: " + Math.round(data.currently.windSpeed) + " mph" + " <i class='wi wi-wind from-" + data.currently.windBearing + "-deg'></i>");
+	$("#dewPoint").html("Dew Point: " + Math.round(data.currently.dewPoint) + "<i class='wi wi-degrees'></i>");
+	$("#visibility").html("Visibility: " + Math.round(data.currently.visibility) + " miles");
+	$("#pressure").html("Air Pressure:" + Math.round(data.currently.pressure) + " mb");
+}
+
+// Update data with SI units
+function displayUnitsSI(data) {
+	$("#temperature").html(Math.round(fahrenheitToCelsius(data.currently.temperature)) + "<i class='wi wi-celsius'></i>");
+	$("#wind").html("Wind: " + Math.round(mphToMps(data.currently.windSpeed)) + " m/s" + " <i class='wi wi-wind from-" + data.currently.windBearing + "-deg'></i>");
+	$("#dewPoint").html("Dew Point: " + Math.round(fahrenheitToCelsius(data.currently.dewPoint)) + "<i class='wi wi-degrees'></i>");
+	$("#visibility").html("Visibility: " + Math.round(mileToKm(data.currently.visibility)) + " km");
+	$("#pressure").html("Air Pressure:" + Math.round(data.currently.pressure) + " hPa");		
 }
 
 // Update weather icon and background color
@@ -180,6 +170,18 @@ function updateTheme(str) {
 		}
 		$(".flex-container").removeClass().addClass("flex-container container-fluid " + weatherTheme[str].background);
 
+}
+
+// Unit Conversions
+function fahrenheitToCelsius(temp) {
+	return ((temp - 32) * 5)/9;
+}
+function mileToKm(distance) {
+	return distance * 1.60934;
+}
+
+function mphToMps(velocity) {
+	return velocity * 0.44704;
 }
 
 // TODO: Refractor
