@@ -116,17 +116,10 @@ function updateWeather(data) {
 	$("#weatherIconToday").addClass(weatherTheme[data.currently.icon].symbol);
 	$("#currentlySummary").text(data.currently.summary);
 	$("#minutelySummary").text(data.minutely.summary);
-
-	if(data.alerts) {
-		$("#alerts").html("");
-		data.alerts.forEach(function(alert) {
-			$("#alerts").append("<i class='fa fa-exclamation-triangle' aria-hidden='true'></i> " + "<a href='" + alert.uri + "' target='_blank'>" + alert.title + "</a>");
-		});
-	}
+	$("#hourlySummary").text(data.hourly.summary);
 
 	if(fahrenheit) {
 		$("#temperature").html(Math.round(data.currently.temperature) + "<i class='wi wi-fahrenheit'></i>");
-		$("#hourlySummary").text(data.hourly.summary);
 		$("#wind").html("Wind: " + Math.round(data.currently.windSpeed) + " mph" + " <i class='wi wi-wind from-" + data.currently.windBearing + "-deg'></i>");
 		$("#humidity").html("Humidity: " + Math.round(data.currently.humidity * 100) + "%");
 		$("#dewPoint").html("Dew Point: " + Math.round(data.currently.dewPoint) + "<i class='wi wi-degrees'></i>");
@@ -136,13 +129,19 @@ function updateWeather(data) {
 	}
 	else {
 		$("#temperature").html(Math.round(data.currently.temperature) + "<i class='wi wi-celsius'></i>");
-		$("#hourlySummary").text(data.hourly.summary);
 		$("#wind").html("Wind: " + Math.round(data.currently.windSpeed) + " m/s" + " <i class='wi wi-wind from-" + data.currently.windBearing + "-deg'></i>");
 		$("#humidity").html("Humidity: " + Math.round(data.currently.humidity * 100) + "%");
 		$("#dewPoint").html("Dew Point: " + Math.round(data.currently.dewPoint) + "<i class='wi wi-degrees'></i>");
 		$("#uvIndex").html("UV Index: " + data.currently.uvIndex);
 		$("#visibility").html("Visibility: " + Math.round(data.currently.visibility) + " km");
 		$("#pressure").html("Air Pressure:" + Math.round(data.currently.pressure) + " hPa");		
+	}
+	
+	if(data.alerts) {
+		$("#alerts").html("");
+		data.alerts.forEach(function(alert) {
+			$("#alerts").append("<i class='fa fa-exclamation-triangle' aria-hidden='true'></i> " + "<a href='" + alert.uri + "' target='_blank'>" + alert.title + "</a>");
+		});
 	}
 }
 
