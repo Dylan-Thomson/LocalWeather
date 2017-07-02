@@ -131,7 +131,6 @@ function displayWeather(data) {
 
 	// Display alerts if any
 	if(data.alerts) {
-		$("#alerts").html("");
 		data.alerts.forEach(function(alert) {
 			$("#alerts").append("<i class='fa fa-exclamation-triangle' aria-hidden='true'></i> " + "<a href='" + alert.uri + "' target='_blank'>" + alert.title + "</a>");
 		});
@@ -169,7 +168,6 @@ function updateTheme(str) {
 			$(".flex-container").removeClass().addClass("flex-container container-fluid " + weatherTheme["default"].background);
 		}
 		$(".flex-container").removeClass().addClass("flex-container container-fluid " + weatherTheme[str].background);
-
 }
 
 // Unit Conversions
