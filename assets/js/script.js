@@ -146,7 +146,7 @@ function displayUnitsUS(data) {
 	$("#wind").html("Wind: " + Math.round(data.currently.windSpeed) + " mph" + " <i class='wi wi-wind from-" + data.currently.windBearing + "-deg'></i>");
 	$("#dewPoint").html("Dew Point: " + Math.round(data.currently.dewPoint) + "<i class='wi wi-degrees'></i>");
 	$("#visibility").html("Visibility: " + Math.round(data.currently.visibility) + " miles");
-	$("#pressure").html("Air Pressure:" + Math.round(data.currently.pressure) + " mb");
+	$("#pressure").html("Air Pressure: " + Math.round(data.currently.pressure) + " mb");
 }
 
 // Update data with SI units
@@ -155,7 +155,7 @@ function displayUnitsSI(data) {
 	$("#wind").html("Wind: " + Math.round(mphToMps(data.currently.windSpeed)) + " m/s" + " <i class='wi wi-wind from-" + data.currently.windBearing + "-deg'></i>");
 	$("#dewPoint").html("Dew Point: " + Math.round(fahrenheitToCelsius(data.currently.dewPoint)) + "<i class='wi wi-degrees'></i>");
 	$("#visibility").html("Visibility: " + Math.round(mileToKm(data.currently.visibility)) + " km");
-	$("#pressure").html("Air Pressure:" + Math.round(data.currently.pressure) + " hPa");		
+	$("#pressure").html("Air Pressure: " + Math.round(data.currently.pressure) + " hPa");		
 }
 
 // Update weather icon and background color
