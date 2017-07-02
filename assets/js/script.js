@@ -67,7 +67,7 @@ function init() {
 
 			// Get city data 
 			$.getJSON("https://maps.googleapis.com/maps/api/geocode/json?latlng=" + position.coords.latitude + "," + position.coords.longitude + "&key=AIzaSyCC_hAkRMemvf2aFYjZ0_EibEM0X7FAh4E", function(data) {
-				$("#location").html("<i class='fa fa-map-marker' aria-hidden='true'></i> " + data.results[0].formatted_address);
+				$("#location").html("<i class='fa fa-map-marker' aria-hidden='true'></i> " + data.results[3].formatted_address);
 			});
 
 			// Initialize page with weather data
