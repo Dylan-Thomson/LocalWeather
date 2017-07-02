@@ -113,6 +113,12 @@ function initWeatherDataUS(url, callback) {
 	});
 }
 
+// Hide spinner and unhide rows
+function onPageLoad() {
+	$(".fa-spinner").addClass("hidden");
+	$(".row").removeClass("hidden");
+}
+
 function displayWeather(data) {
 	// Display unit independent content
 	$("#time").text(timeConverter(data.currently.time));
@@ -178,7 +184,6 @@ function mphToMps(velocity) {
 	return velocity * 0.44704;
 }
 
-// TODO: Refractor
 function timeConverter(UNIX_timestamp){
   var a = new Date(UNIX_timestamp * 1000);
   var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
@@ -188,22 +193,23 @@ function timeConverter(UNIX_timestamp){
   var hour = a.getHours();
   var min = a.getMinutes();
   var days = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'];
-  var day = days[a.getDay()];
+  var weekday = days[a.getDay()];
+
+  var period;
 
   if(hour > 12) {
-  	return day + ", " + month + " " + date + ", " + year + " " + (hour-12) + ":" + ('0' + min).slice(-2) + " PM";
-  } 
-  if(hour === 12) {
-  	return day + ", " + month + " " + date + ", " + year + " " + hour + ":" + ('0' + min).slice(-2) + " PM";
+  	hour -= 12;
+  	period = "PM";
+  } else if(hour === 12) {
+  	period = "PM";
   }
-  return day + ", " + month + " " + date + ", " + year + " " + hour + ":" + ('0' + min).slice(-2) + " AM";
+  else {
+  	period = "AM";
+  }
+
+  return weekday + ", " + month + " " + date + ", " + year + " " + hour + ":" + ('0' + min).slice(-2) + " " + period;
 }
 
-// Hide spinner and unhide rows
-function onPageLoad() {
-	$(".fa-spinner").addClass("hidden");
-	$(".row").removeClass("hidden");
-}
 
 
 // BUTTONS FOR TESTING THEMES, REMOVE THESE
