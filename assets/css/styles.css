@@ -24,12 +24,18 @@
 }
 
 #time {
-	font-style: italic;
+	font-family: 'Open Sans', sans-serif;
+}
+
+#location {
+	font-family: 'Open Sans', sans-serif;
+
 }
 
 #weather {
 	font-size: 4em;
 	margin: auto 1em;
+	font-family: 'Open Sans', sans-serif;
 }
 
 #location, #hourlySummary {
@@ -42,11 +48,14 @@
 
 #hourlySummary, #minutelySummary {
 	margin: 1em;
+	font-family: 'Bellefair', serif;
+
 }
 
 #weatherData {
 	margin: 1em auto;
 	background: rgba(15, 15, 15, .7);
+	font-family: 'Open Sans', sans-serif;
 }
 
 #weatherData div {
@@ -58,6 +67,7 @@
 	font-size: 2em;
 	list-style: none;
 	color: red;
+	font-family: 'Bellefair', serif;
 }
 
 #alerts a {
@@ -70,6 +80,8 @@
 
 #darksky a {
 	color: #fff;
+	font-family: 'Open Sans', sans-serif;
+	font-style: italic;
 }
 
 #darksky a:hover {
