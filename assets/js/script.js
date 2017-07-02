@@ -1,5 +1,4 @@
 var temperature;
-var url = "";
 var data = {};
 var fahrenheit = true;
 
@@ -65,9 +64,6 @@ function init() {
 	// Get location data
 	if ("geolocation" in navigator) {
 		navigator.geolocation.getCurrentPosition(function(position) {
-			
-		  // Build URL
-			url = "https://api.darksky.net/forecast/b2e8d595c58230947ca08220d0572147/" + position.coords.latitude + ",%20" + position.coords.longitude + "?lang=en";
 
 			// Get city data 
 			$.getJSON("https://maps.googleapis.com/maps/api/geocode/json?latlng=" + position.coords.latitude + "," + position.coords.longitude + "&key=AIzaSyCC_hAkRMemvf2aFYjZ0_EibEM0X7FAh4E", function(data) {
@@ -75,12 +71,10 @@ function init() {
 			});
 
 			// Initialize page with weather data
-			initWeatherDataUS(url, function(d) {
+			initWeatherDataUS("https://api.darksky.net/forecast/b2e8d595c58230947ca08220d0572147/" + position.coords.latitude + ",%20" + position.coords.longitude + "?lang=en", function(d) {
 				// Save US data
 				data = d;
 			});
-
-
 		});
 	}
 	else {
