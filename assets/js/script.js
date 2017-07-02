@@ -1,6 +1,6 @@
 var temperature;
 var url = "";
-var usData = {};
+var data = {};
 var fahrenheit = true;
 
 // Get location and populate page with weather data
@@ -75,9 +75,9 @@ function init() {
 			});
 
 			// Initialize page with weather data
-			initWeatherDataUS(url, function(data) {
+			initWeatherDataUS(url, function(d) {
 				// Save US data
-				usData = data;
+				data = d;
 			});
 
 
@@ -93,12 +93,12 @@ function init() {
 		fahrenheit = !fahrenheit;
 
 		if (fahrenheit) {
-			displayUnitsUS(usData);
-			updateTheme(usData.currently.icon);
+			displayUnitsUS(data);
+			updateTheme(data.currently.icon);
 		}
 		else {
-			displayUnitsSI(usData);
-			updateTheme(usData.currently.icon);
+			displayUnitsSI(data);
+			updateTheme(data.currently.icon);
 		}
 	});
 }
@@ -201,7 +201,6 @@ function timeConverter(UNIX_timestamp){
   } 
   if(hour === 12) {
   	return day + ", " + month + " " + date + ", " + year + " " + hour + ":" + ('0' + min).slice(-2) + " PM";
-
   }
   return day + ", " + month + " " + date + ", " + year + " " + hour + ":" + ('0' + min).slice(-2) + " AM";
 }
