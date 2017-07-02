@@ -162,12 +162,12 @@ function displayUnitsSI(data) {
 function updateTheme(str) {
 		if(weatherTheme[str].symbol) {
 			$("#weatherIconToday").removeClass().addClass("wi " + weatherTheme[str].symbol);
+			$(".flex-container").removeClass().addClass("flex-container container-fluid " + weatherTheme[str].background);
 		}
 		else {
 			$("#weatherIconToday").removeClass().addClass("wi " + weatherTheme["default"].symbol);
 			$(".flex-container").removeClass().addClass("flex-container container-fluid " + weatherTheme["default"].background);
 		}
-			$(".flex-container").removeClass().addClass("flex-container container-fluid " + weatherTheme[str].background);
 }
 
 // Unit Conversions
@@ -210,7 +210,7 @@ function timeConverter(UNIX_timestamp){
 
 
 
-// BUTTONS FOR TESTING THEMES, REMOVE THESE
+//BUTTONS FOR TESTING THEMES, REMOVE THESE
 // $("#default").on("click", function() {
 // 	updateTheme("default");
 // });
