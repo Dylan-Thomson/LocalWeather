@@ -214,6 +214,10 @@ function onPageLoad() {
 
 
 // BUTTONS FOR TESTING THEMES, REMOVE THESE
+// $("#default").on("click", function() {
+// 	updateTheme("default");
+// });
+
 // $("#clearday").on("click", function() {
 // 		updateTheme("clear-day");
 // });
