@@ -167,7 +167,7 @@ function updateTheme(str) {
 			$("#weatherIconToday").removeClass().addClass("wi " + weatherTheme["default"].symbol);
 			$(".flex-container").removeClass().addClass("flex-container container-fluid " + weatherTheme["default"].background);
 		}
-		$(".flex-container").removeClass().addClass("flex-container container-fluid " + weatherTheme[str].background);
+			$(".flex-container").removeClass().addClass("flex-container container-fluid " + weatherTheme[str].background);
 }
 
 // Unit Conversions
