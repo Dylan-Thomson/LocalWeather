@@ -23,10 +23,6 @@
 	padding: 0px;
 }
 
-.btn {
-	width: 100%;
-}
-
 #time {
 	font-style: italic;
 }
@@ -80,7 +76,7 @@
 	color: #fff;
 }
 
-/*Toggle Switch*/
+/* Toggle Switch */
 .switch-container {
 	font-size: 3em;
 }
@@ -132,7 +128,7 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
-/*Theme classes*/
+/* Theme classes */
 .clearDay {
 	background: rgb(30, 144, 255);
 
@@ -175,6 +171,7 @@ input:checked + .slider:before {
 	background: rgb(143, 168, 238);
 }
 
+/* MEDIA QUERIES */
 @media (max-width: 766px) {
 	#weather {
 		font-size: 2em;
