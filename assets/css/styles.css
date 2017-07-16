@@ -184,7 +184,7 @@ input:checked + .slider:before {
 }
 
 /* MEDIA QUERIES */
-@media (max-width: 766px) {
+@media (max-width: 767px) {
 	#weather {
 		font-size: 2em;
 	}
@@ -202,5 +202,17 @@ input:checked + .slider:before {
 	}
 	#weatherData {
 		font-size: 0.75em
+	}
+
+	#weatherData div {
+		margin: auto 0.5em;
+	}
+}
+@media (min-width: 768px) and (max-width: 1366px) {
+	.row {
+		width: 100%;
+	}
+	.container-fluid {
+		padding: 0;
 	}
 }
